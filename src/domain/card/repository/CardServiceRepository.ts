@@ -16,10 +16,7 @@ import { CardServicesHandlerErrorCodes } from '@/modules/card/error/enum/CardSer
 export default class CardServiceRepository implements CardRepository {
   async find(): Promise<Card[]> {
     try {
-      const cards = await PokemonTCG.getAllCards({ page: 1 })
-      console.log(import.meta.env)
-
-      console.log({ cards })
+      const cards = await PokemonTCG.findCardsByQueries({ q: "name:charizard" })
 
       return cards.map((card) => {
         return new Card(

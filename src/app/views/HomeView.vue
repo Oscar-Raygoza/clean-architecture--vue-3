@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 import { useCardStore } from '../stores/Card/CardStore'
 
 const cardsStore = useCardStore()
@@ -7,11 +7,16 @@ const cardsStore = useCardStore()
 onMounted(async () => {
   await cardsStore.getAllCards()
 })
+
+const cards = computed(() => cardsStore.cards)
 </script>
 
 <template>
-  <h1 className="text-3xl font-bold underline !uppercase">Hello world!</h1>
   <main>
-    <img :src="cardsStore?.cards[0]?.image" width="300px" style="border-radius: 5px" />
+    <h1 className="text-3xl font-bold underline !uppercase">Hello world!</h1>
+
+    <div v-for="card in cards" :key="card.id">
+      <img :src="card.image" width="300px" style="border-radius: 5px" />
+    </div>
   </main>
 </template>
