@@ -2,13 +2,13 @@
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
 </script>
 <template>
-  <div class="bg-brand-primary">
+  <div class="bg-[linear-gradient(90deg,#224459,#1A202C)]">
     <nav class="flex container mx-auto px-5 py-3">
       <ul class="flex flex-grow space-x-4">
         <li>
           <a href="/" class="flex items-center space-x-3 text-gray-700 md:mr-5">
-            <span class="text-gray-200 hover:text-gray-300 text-2xl font-semibold py-1">
-              <TCGIcon name="x" class="inline-block mr-2" size="28" /> Pokémon TCG
+            <span class="text-neutral-white-light hover:text-gray-300 text-xl align-center font-semibold">
+              <TCGIcon name="main-logo" class="inline-block mr-2" size="28" /> Pokémon TCG
             </span>
           </a>
         </li>

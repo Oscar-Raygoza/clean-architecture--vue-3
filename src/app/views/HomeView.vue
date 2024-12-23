@@ -13,8 +13,6 @@ const cards = computed(() => cardsStore.cards)
 
 <template>
   <main>
-    <h1 className="text-3xl font-bold underline !uppercase">Hello world!</h1>
-
     <div v-for="card in cards" :key="card.id" class="container flex flex-row ">
       <img :src="card.image" width="300px" style="border-radius: 5px" class="basis-1/3" />
     </div>

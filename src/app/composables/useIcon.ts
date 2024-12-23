@@ -9,6 +9,7 @@ export const useIcons = () => {
     ['facebook', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/facebook.icon.vue'))],
     ['github', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/github.icon.vue'))],
     ['linkedin', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/linkedin.icon.vue'))],
+    ['main-logo', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/brand/logo.icon.vue'))],
     ['x', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/x.icon.vue'))],
   ]);
 
