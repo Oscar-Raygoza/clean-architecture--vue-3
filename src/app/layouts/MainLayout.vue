@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import SingleLayout from '@/app/components/Shared/Layout/Navbar/SimpleNavbar.vue'
+import SimpleNavbar from '@/app/components/Shared/Layout/Navbar/SimpleNavbar.vue'
 import Footer from '@/app/components/Shared/Layout/Footer/Footer.vue'
 </script>
 <template>
   <div class="layout-container">
-    <SingleLayout />
+    <SimpleNavbar />
     <main>
       <slot>
         <!-- <router-view /> -->
