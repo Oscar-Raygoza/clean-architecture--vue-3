@@ -7,7 +7,7 @@ import Footer from '@/app/components/Shared/Layout/Footer/Footer.vue'
     <SimpleNavbar />
     <main>
       <slot>
-        <!-- <router-view /> -->
+        <router-view />
       </slot>
     </main>
     <Footer />
