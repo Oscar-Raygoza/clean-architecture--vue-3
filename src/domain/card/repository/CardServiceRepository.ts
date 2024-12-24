@@ -5,6 +5,9 @@ import { PokemonTCG } from 'pokemon-tcg-sdk-typescript'
 // entities
 import Card from '@/domain/card/entities/Card'
 
+// dto's
+import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
+
 // repository
 import type { CardRepository } from '@/domain/card/repository/CardRepository'
 
@@ -14,9 +17,13 @@ import { CardServicesHandlerErrorCodes } from '@/modules/card/error/enum/CardSer
 
 @injectable()
 export default class CardServiceRepository implements CardRepository {
-  async find(): Promise<Card[]> {
+  async find(port: FindCardsDto): Promise<Card[]> {
     try {
-      const cards = await PokemonTCG.findCardsByQueries({ q: "name:charizard" })
+      const cards = await PokemonTCG.findCardsByQueries({
+        q: port.query || 'nationalPokedexNumbers:[1 TO 151]',
+        pageSize: port.size || 5,
+        page: port.page || 1,
+      })
 
       return cards.map((card) => {
         return new Card(
