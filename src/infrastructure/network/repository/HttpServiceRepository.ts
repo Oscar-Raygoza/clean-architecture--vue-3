@@ -3,7 +3,7 @@ import { injectable } from 'inversify'
 import ky from 'ky'
 import type { Hooks, KyInstance } from 'ky'
 
-import config from "@/shared/constants"
+import config from "@/infrastructure/config/constants"
 
 import type { HTTPError } from '@/infrastructure/network/dto/HttpError'
 import type { HttpRepository } from '@/infrastructure/network/repository/HttpRepository'
@@ -14,7 +14,7 @@ import type Response from '@/infrastructure/network/dto/Response'
 import { NetworkErrorHandlerCode } from '@/modules/network/error/enum/NetworkErrorHandlerCode'
 import NetworkErrorHandler from '@/modules/network/error/entities/NetworkErrorHandler'
 
-import EnvironmentHelper from '@/shared/env/EnviromentHelper'
+import EnvironmentHelper from '@/infrastructure/config/env/EnviromentHelper'
 
 @injectable()
 export default class HttpServiceRepository implements HttpRepository {

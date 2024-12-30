@@ -1,7 +1,7 @@
 import { ContainerModule } from 'inversify'
 import type { interfaces } from 'inversify'
 
-import httpTypes from "@/modules/network/types"
+import httpTypes from "@/infrastructure/network/di/types"
 
 // repository
 import type { HttpRepository } from '@/infrastructure/network/repository/HttpRepository'

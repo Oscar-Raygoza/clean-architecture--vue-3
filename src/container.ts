@@ -5,12 +5,13 @@ import getDecorators from 'inversify-inject-decorators'
 const container = new Container()
 
 // infrastructure
-import networkContainer from '@/modules/network/network.container'
+import networkContainer from '@/infrastructure/network/di/network.container'
+import persistenceContainer from '@/infrastructure/persistence/di/persistence.container'
 
 // domain
-import cardsContainer from '@/modules/card/card.container'
+import cardsContainer from '@/infrastructure/card/di/card.container'
 
-container.load(...[networkContainer, cardsContainer])
+container.load(...[networkContainer, persistenceContainer, cardsContainer])
 
 const { lazyInject } = getDecorators(container)
 export { lazyInject, container }

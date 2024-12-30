@@ -3,24 +3,29 @@ import type { IconType } from '@/app/components/Shared/TCGIcons/types/IconType'
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
 
 export interface FooterNavIcons {
+  id: string // Added id property
   to: string
   name: IconType
 }
 
 const socialNetworks: FooterNavIcons[] = [
   {
+    id: 'twitter',
     to: '/test',
     name: 'x',
   },
   {
+    id: 'facebook',
     to: '/#facebook',
     name: 'facebook',
   },
   {
+    id: 'github',
     to: '/#github',
     name: 'github',
   },
   {
+    id: 'linkedin',
     to: '/#linkedin',
     name: 'linkedin',
   },
@@ -28,26 +33,29 @@ const socialNetworks: FooterNavIcons[] = [
 </script>
 
 <template>
-  <footer
-    class="flex flex-col absolute bottom-0 left-0 w-full items-center bg-neutral-dark text-center text-surface dark:text-white"
-  >
-    <div class="container pt-9 mb-6 flex justify-center space-x-2">
-      <div v-for="icon in socialNetworks" :key="icon.id">
-        <router-linka
+  <footer class="fixed bottom-0 left-0 w-full bg-neutral-dark text-surface dark:text-white z-10">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-center space-x-4 py-6">
+        <router-link
+          v-for="icon in socialNetworks"
+          :key="icon.id"
           :to="icon.to"
-          class="rounded-full bg-transparent p-3 font-medium uppercase leading-normal text-surface transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-black focus:outline-none focus:ring-0 dark:text-white dark:hover:bg-secondary-900"
-          data-twe-ripple-init
+          class="rounded-full p-3 transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-black focus:outline-none focus:ring-0 dark:hover:bg-secondary-900"
         >
-          <span class="[&>svg]:h-5 [&>svg]:w-5 inline-block">
-            <TCGIcon :name="icon.name" class="inline-block" />
+          <span class="inline-block">
+            <TCGIcon :name="icon.name" class="h-5 w-5" />
           </span>
-        </router-linka>
+        </router-link>
       </div>
-    </div>
 
-    <div class="w-full bg-black/5 p-4 text-center">
-      © 2025 Copyright:
-      <router-link to="#profile">Oscar Raygoza</router-link>
+      <div class="border-t border-black/10 dark:border-white/10 py-4 text-center">
+        <span class="text-sm">
+          © {{ new Date().getFullYear() }} Copyright:
+          <router-link to="#profile" class="hover:text-primary-500 transition-colors duration-200">
+            Oscar Raygoza
+          </router-link>
+        </span>
+      </div>
     </div>
   </footer>
 </template>

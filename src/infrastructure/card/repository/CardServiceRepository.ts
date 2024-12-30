@@ -12,7 +12,7 @@ import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
 import type { CardRepository } from '@/domain/card/repository/CardRepository'
 
 // errors
-import CardServiceHandlerError from '@/modules/card/error/entities/CardServiceHandlerError'
+import CardServiceHandlerError from '@/modules/card/error/CardServiceHandlerError'
 import { CardServicesHandlerErrorCodes } from '@/modules/card/error/enum/CardServicesHandlerErrorCodes'
 
 @injectable()
@@ -20,7 +20,7 @@ export default class CardServiceRepository implements CardRepository {
   async find(port: FindCardsDto): Promise<Card[]> {
     try {
       const cards = await PokemonTCG.findCardsByQueries({
-        q: port.query || 'nationalPokedexNumbers:[1 TO 151]',
+        q: port.query,
         pageSize: port.size || 5,
         page: port.page || 1,
       })

@@ -12,19 +12,16 @@ import type Card from '@/domain/card/entities/Card'
 
 const cardsStore = useCardStore()
 
-
 onMounted(async () => {
-  cardsStore.hydrate()
-
-  if (!cardsStore.cards.length) await cardsStore.getRandomCards()
+  await cardsStore.getRandomCards()
 })
-
-const cards = computed(() => cardsStore.cards) as unknown as Card[]
 
 // state
 const form = reactive({
   querySearch: '',
 })
+
+const cards = computed(() => cardsStore.cards) as unknown as Card[]
 
 function getCardPosition(position: number) {
   const offsetX = 200
