@@ -4,6 +4,7 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 const sans = defaultTheme.fontFamily.sans.filter((font) => font !== 'Roboto')
 
 export default {
+  darkMode: 'class',
   content: ['./src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {

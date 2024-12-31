@@ -6,7 +6,7 @@ import persistenceTypes from '@/infrastructure/persistence/di/types'
 
 import type Card from '@/domain/card/entities/Card'
 
-import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistenceStorageRepository'
+import type { DataObjectStorage } from '@/infrastructure/persistence/enum/DataObjectStorage'
 import type { PersistenceRepository } from '@/infrastructure/persistence/repository/PersistenceRepository'
 
 import type MapperType from '@/application/common/mapper/type/MapperType'
@@ -14,7 +14,7 @@ import type { StorageCardsDto } from '@/application/card/storage/dto/StorageCard
 import { CardsStorageKeys } from '@/application/card/storage/enum/CardsStorageKeys'
 
 @injectable()
-export class CardStorageRepository implements PersistentStorageRepository<Card[]> {
+export class CardStorageDAO implements DataObjectStorage<Card[]> {
   constructor(
     @inject(persistenceTypes.sessionStorageManagerRepository)
     private readonly storageManager: PersistenceRepository,

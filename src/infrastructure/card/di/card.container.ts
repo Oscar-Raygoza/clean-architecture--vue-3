@@ -10,12 +10,12 @@ import type { StorageCardsDto } from '@/application/card/storage/dto/StorageCard
 // repository
 import type { CardRepository } from '@/domain/card/repository/CardRepository'
 import CardServiceRepository from '@/infrastructure/card/repository/CardServiceRepository'
-import { CardStorageRepository } from '@/infrastructure/card/repository/CardStorageRepository'
+import { CardStorageDAO } from '@/infrastructure/card/dao/CardStorageDAO'
 
 // mappers
 import type MapperType from '@/application/common/mapper/type/MapperType'
 import PersistentCardsMapper from '@/application/card/storage/mapper/PersistentCardsMapper'
-import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistenceStorageRepository'
+import type { DataObjectStorage } from '@/infrastructure/persistence/enum/DataObjectStorage'
 
 export default new ContainerModule((bind: interfaces.Bind) => {
   // mappers
@@ -24,7 +24,7 @@ export default new ContainerModule((bind: interfaces.Bind) => {
   // repositories
   bind<CardRepository>(cardTypes.cardsServiceRepository).to(CardServiceRepository)
 
-  bind<PersistentStorageRepository<Card[]>>(cardTypes.persistentStorageRepository).to(
-    CardStorageRepository,
+  bind<DataObjectStorage<Card[]>>(cardTypes.cardStorageDAO).to(
+    CardStorageDAO,
   )
 })

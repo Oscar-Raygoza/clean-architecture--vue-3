@@ -11,7 +11,7 @@ import Card from '@/domain/card/entities/Card'
 import type { CardRepository } from '@/domain/card/repository/CardRepository'
 import type { CardsState } from './types/CardState'
 
-import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistenceStorageRepository'
+import type { DataObjectStorage } from '@/infrastructure/persistence/enum/DataObjectStorage'
 
 // dto's
 import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
@@ -20,8 +20,8 @@ export const useCardStore = defineStore('CardStore', () => {
   // repositories
   const cardsRepository = container.get<CardRepository>(cardTypes.cardsServiceRepository)
 
-  const cardStorageRepository = container.get<PersistentStorageRepository<Card[]>>(
-    cardTypes.persistentStorageRepository,
+  const cardStorageDAO = container.get<DataObjectStorage<Card[]>>(
+    cardTypes.cardStorageDAO,
   )
 
   // data
@@ -46,7 +46,7 @@ export const useCardStore = defineStore('CardStore', () => {
 
     state.cards = cards
 
-    cardStorageRepository.set(cards)
+    cardStorageDAO.set(cards)
   }
 
   function hydrate() {
@@ -54,11 +54,11 @@ export const useCardStore = defineStore('CardStore', () => {
   }
 
   function _hydrateRandomCards() {
-    const cards = cardStorageRepository.get()
+    const cards = cardStorageDAO.get()
 
     if (cards) {
       state.cards = cards
-      cardStorageRepository.set(cards)
+      cardStorageDAO.set(cards)
     }
   }
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
+import TCGThemeToggle from '@/app/components/Shared/TCGThemeButtons/TCGThemeToggle.vue'
 </script>
 <template>
   <div class="bg-[linear-gradient(90deg,#224459,#1A202C)]">
@@ -27,7 +28,7 @@ import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
           >
         </li>
         <li class="hidden sm:flex">
-          <TCGIcon name="dark-mode" class="inline-block text-white cursor-pointer" size="22" />
+          <TCGThemeToggle/>
         </li>
       </ul>
     </nav>
