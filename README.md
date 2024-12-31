@@ -59,7 +59,7 @@ bun lint
 
 # clean-architecture-vue-3
 
-```mermeid
+```mermaid
 graph TB
     User((User))
 
