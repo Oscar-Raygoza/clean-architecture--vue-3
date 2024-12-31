@@ -11,8 +11,8 @@ import type { HttpRepository } from '@/infrastructure/network/repository/HttpRep
 import type Payload from '@/infrastructure/network/dto/Payload'
 import type Response from '@/infrastructure/network/dto/Response'
 
-import { NetworkErrorHandlerCode } from '@/modules/network/error/enum/NetworkErrorHandlerCode'
-import NetworkErrorHandler from '@/modules/network/error/entities/NetworkErrorHandler'
+import { NetworkErrorHandlerCode } from '@/application/network/error/enum/NetworkErrorHandlerCode'
+import NetworkErrorHandler from '@/application/network/error/entities/NetworkErrorHandler'
 
 import EnvironmentHelper from '@/infrastructure/config/env/EnviromentHelper'
 

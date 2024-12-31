@@ -9,9 +9,9 @@ import type Card from '@/domain/card/entities/Card'
 import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistenceStorageRepository'
 import type { PersistenceRepository } from '@/infrastructure/persistence/repository/PersistenceRepository'
 
-import type MapperType from '@/modules/common/mapper/type/MapperType'
-import type { StorageCardsDto } from '@/modules/card/storage/dto/StorageCardDto'
-import { CardsStorageKeys } from '@/modules/card/storage/enum/CardsStorageKeys'
+import type MapperType from '@/application/common/mapper/type/MapperType'
+import type { StorageCardsDto } from '@/application/card/storage/dto/StorageCardDto'
+import { CardsStorageKeys } from '@/application/card/storage/enum/CardsStorageKeys'
 
 @injectable()
 export class CardStorageRepository implements PersistentStorageRepository<Card[]> {

@@ -1,7 +1,7 @@
 import { injectable } from 'inversify'
 import type { StorageCardsDto } from '../dto/StorageCardDto'
 
-import Mapper from '@/modules/common/mapper/Mapper'
+import Mapper from '@/application/common/mapper/Mapper'
 
 // entities
 import Card from '@/domain/card/entities/Card'

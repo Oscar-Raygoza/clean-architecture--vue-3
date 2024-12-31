@@ -12,8 +12,8 @@ import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
 import type { CardRepository } from '@/domain/card/repository/CardRepository'
 
 // errors
-import CardServiceHandlerError from '@/modules/card/error/CardServiceHandlerError'
-import { CardServicesHandlerErrorCodes } from '@/modules/card/error/enum/CardServicesHandlerErrorCodes'
+import CardServiceHandlerError from '@/application/card/error/CardServiceHandlerError'
+import { CardServicesHandlerErrorCodes } from '@/application/card/error/enum/CardServicesHandlerErrorCodes'
 
 @injectable()
 export default class CardServiceRepository implements CardRepository {

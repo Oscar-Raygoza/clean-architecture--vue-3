@@ -5,7 +5,7 @@ import cardTypes from '@/infrastructure/card/di/types'
 
 // entities
 import type Card from '@/domain/card/entities/Card'
-import type { StorageCardsDto } from '@/modules/card/storage/dto/StorageCardDto'
+import type { StorageCardsDto } from '@/application/card/storage/dto/StorageCardDto'
 
 // repository
 import type { CardRepository } from '@/domain/card/repository/CardRepository'
@@ -13,8 +13,8 @@ import CardServiceRepository from '@/infrastructure/card/repository/CardServiceR
 import { CardStorageRepository } from '@/infrastructure/card/repository/CardStorageRepository'
 
 // mappers
-import type MapperType from '@/modules/common/mapper/type/MapperType'
-import PersistentCardsMapper from '@/modules/card/storage/mapper/PersistentCardsMapper'
+import type MapperType from '@/application/common/mapper/type/MapperType'
+import PersistentCardsMapper from '@/application/card/storage/mapper/PersistentCardsMapper'
 import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistenceStorageRepository'
 
 export default new ContainerModule((bind: interfaces.Bind) => {

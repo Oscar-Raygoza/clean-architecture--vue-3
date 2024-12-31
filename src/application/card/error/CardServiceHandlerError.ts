@@ -1,4 +1,4 @@
-import type { CardServicesHandlerErrorCodes } from '@/modules/card/error/enum/CardServicesHandlerErrorCodes'
+import type { CardServicesHandlerErrorCodes } from '@/application/card/error/enum/CardServicesHandlerErrorCodes'
 
 export default class CardServiceHandlerError extends Error {
   readonly code: CardServicesHandlerErrorCodes

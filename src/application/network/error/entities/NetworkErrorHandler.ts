@@ -1,4 +1,4 @@
-import { NetworkErrorHandlerCode } from '@/modules/network/error/enum/NetworkErrorHandlerCode'
+import { NetworkErrorHandlerCode } from '@/application/network/error/enum/NetworkErrorHandlerCode'
 
 
 export default class NetworkErrorHandler extends Error {
