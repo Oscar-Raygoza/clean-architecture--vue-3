@@ -16,6 +16,10 @@ const router = createRouter({
           path: '/search',
           component: () => import('@/app/views/SearchView.vue')
         },
+        {
+          path: '/colors',
+          component: () => import('@/app/views/TCGSystemColors.vue')
+        },
       ]
     },
   ],

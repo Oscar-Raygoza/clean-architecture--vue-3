@@ -4,4 +4,6 @@ export type IconType =
   | 'github'
   | 'linkedin'
   | 'main-logo'
+  | 'moon'
+  | 'sun'
   | 'x'

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-background-light w-full h-screen dark:bg-background-dark">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" />
@@ -17,5 +17,9 @@
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+body * {
+  @apply transition-colors duration-200;
 }
 </style>

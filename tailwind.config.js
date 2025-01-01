@@ -4,7 +4,7 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 const sans = defaultTheme.fontFamily.sans.filter((font) => font !== 'Roboto')
 
 export default {
-  darkMode: 'class',
+  darkMode: ['class'],
   content: ['./src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
@@ -21,56 +21,102 @@ export default {
         ],
       },
       colors: {
-        cardType: {
-          electric: '#FFDD00',
-          fire: '#FF4500',
-          water: '#1E90FF',
-          grass: '#32CD32',
-          psychic: '#9932CC',
-          neutral: '#A9A9A9',
-        },
         brand: {
           primary: {
-            light: '#224459',
-            DEFAULT: '#224459',
-            dark: '#224459',
+            light: {
+              DEFAULT: '#3B82F6', // blue-500
+              lighter: '#60A5FA', // blue-400
+              dark: '#2563EB', // blue-600
+            },
+            dark: {
+              DEFAULT: '#60A5FA', // blue-400
+              lighter: '#93C5FD', // blue-300
+              dark: '#3B82F6', // blue-500
+            },
           },
           secondary: {
-            light: '#41A664',
-            DEFAULT: '#41A664',
-            dark: '#41A664',
+            light: {
+              DEFAULT: '#EF4444', // red-500
+              lighter: '#F87171', // red-400
+              dark: '#DC2626', // red-600
+            },
+            dark: {
+              DEFAULT: '#F87171', // red-400
+              lighter: '#FCA5A5', // red-300
+              dark: '#EF4444', // red-500
+            },
           },
-          tertiary: {
-            light: '#A69E76',
-            DEFAULT: '#A69E76',
-            dark: '#A69E76',
+        },
+        accent: {
+          light: {
+            DEFAULT: '#FACC15', // yellow-400
+            lighter: '#FDE047', // yellow-300
+            dark: '#EAB308', // yellow-500
           },
-          accent: {
-            light: '#A68A38',
-            DEFAULT: '#A68A38',
-            dark: '#A68A38',
+          dark: {
+            DEFAULT: '#FDE047', // yellow-300
+            lighter: '#FEF08A', // yellow-200
+            dark: '#FACC15', // yellow-400
           },
-          base: {
-            light: '#D9A441',
-            DEFAULT: '#D9A441',
-            dark: '#D9A441',
+        },
+        success: {
+          light: {
+            DEFAULT: '#22C55E', // green-500
+            lighter: '#4ADE80', // green-400
+            dark: '#16A34A', // green-600
+          },
+          dark: {
+            DEFAULT: '#4ADE80', // green-400
+            lighter: '#86EFAC', // green-300
+            dark: '#22C55E', // green-500
+          },
+        },
+        warning: {
+          light: {
+            DEFAULT: '#F97316', // orange-500
+            lighter: '#FB923C', // orange-400
+            dark: '#EA580C', // orange-600
+          },
+          dark: {
+            DEFAULT: '#FB923C', // orange-400
+            lighter: '#FDBA74', // orange-300
+            dark: '#F97316', // orange-500
+          },
+        },
+        error: {
+          light: {
+            DEFAULT: '#DC2626', // red-600
+            lighter: '#EF4444', // red-500
+            dark: '#B91C1C', // red-700
+          },
+          dark: {
+            DEFAULT: '#EF4444', // red-500
+            lighter: '#F87171', // red-400
+            dark: '#DC2626', // red-600
           },
         },
         neutral: {
+          light: {
+            DEFAULT: '#6B7280', // gray-500
+            lighter: '#9CA3AF', // gray-400
+            dark: '#4B5563', // gray-600
+          },
           dark: {
-            light: '#2D3748',
-            DEFAULT: '#1A202C',
-            dark: '#121924',
+            DEFAULT: '#4B5563', // gray-600
+            lighter: '#6B7280', // gray-500
+            dark: '#374151', // gray-700
           },
-          white: {
-            light: '#F7FAFC',
-            DEFAULT: '#FFFFFF',
-            dark: '#EDF2F7',
+        },
+        background: {
+          light: {
+            DEFAULT: '#F3F4F6', // gray-100
+            lighter: '#F9FAFB', // gray-50
+            dark: '#E5E7EB', // gray-200
           },
-          gray: {
-            light: '#CBD5E0',
-            DEFAULT: '#A0AEC0',
-            dark: '#718096',
+          dark: {
+            DEFAULT: '#111827', // gray-900
+            lighter: '#1F2937', // gray-800
+            dark: '#030712', // gray-950
           },
         },
       },

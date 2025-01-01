@@ -11,6 +11,8 @@ export const useIcons = () => {
     ['linkedin', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/linkedin.icon.vue'))],
     ['main-logo', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/brand/logo.icon.vue'))],
     ['x', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/x.icon.vue'))],
+    ['moon', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/dark-mode/moon.icon.vue'))],
+    ['sun', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/dark-mode/sun.icon.vue'))],
   ]);
 
   return {

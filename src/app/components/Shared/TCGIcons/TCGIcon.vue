@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue'
+import { computed, useSlots, type SetupContext } from 'vue'
 
 import type { IconType } from './types/IconType'
 
@@ -10,7 +10,8 @@ const props = defineProps<{
   name?: IconType
 }>()
 
-const slots = useSlots()
+const slots: SetupContext['slots'] = useSlots()
+
 const { getIcon } = useIcons()
 
 const iconName = computed<IconType>(() => {
@@ -21,7 +22,7 @@ const icon = computed(() => getIcon(iconName.value))
 </script>
 
 <template>
-  <component :is="icon" :width="size ?? 24" :height="size ?? 24" />
+  <component :is="icon" :width="size ?? 24" :height="size ?? 24"/>
 </template>
 
 <style scoped>
