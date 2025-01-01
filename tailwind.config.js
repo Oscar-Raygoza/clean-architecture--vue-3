@@ -119,7 +119,6 @@ export default {
             dark: '#374151', // gray-700
           },
         },
-        base: {},
         background: {
           light: {
             DEFAULT: '#F3F4F6', // gray-100

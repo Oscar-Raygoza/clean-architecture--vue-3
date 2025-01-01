@@ -28,18 +28,18 @@ const nav: NavItems[] = [
 ]
 </script>
 <template>
-  <div class="bg-brand-primary-light-lighter dark:bg-brand-primary-dark">
+  <div class="bg-background-ligth dark:bg-background-dark">
     <nav class="flex container mx-auto px-5 py-3">
       <ul class="flex flex-grow space-x-4">
         <li>
           <router-link to="/" class="flex items-center space-x-3 md:mr-5">
             <span
-              class="text-neutral-white-light hover:text-gray-300 text-xl align-center font-semibold"
+              class="hover:text-gray-300 text-xl align-center font-semibold"
             >
               <TCGIcon name="main-logo" class="inline-block mr-2" :size="18" />
               <TCGTitle
                 variant="primary"
-                class="!text-default-light dark:!text-default-dark !text-lg items-center text-center mt-1"
+                class="!text-default-dark dark:!text-default-light !text-lg items-center text-center mt-1"
               >
                 Pokémon TCG
               </TCGTitle>
@@ -51,7 +51,7 @@ const nav: NavItems[] = [
         <li class="hidden sm:flex" v-for="(link, key) in nav" :key="key">
           <router-link
             :to="link.to"
-            class="text-default-light dark:text-default-dark dark:text-blackink link-underline link-underline-black hover:text-default-light text font-semibold py-1 px-3 underline-offset-4 transition duration-30"
+            class="text-neutral-dark dark:text-default-light dark:text-blackink link-underline link-underline-black hover:text-default-dark text font-semibold py-1 px-3 underline-offset-4 transition duration-30"
             >{{ link.title }}</router-link
           >
         </li>
