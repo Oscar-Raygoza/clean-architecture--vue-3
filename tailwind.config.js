@@ -47,6 +47,18 @@ export default {
             },
           },
         },
+        default: {
+          light: {
+            DEFAULT: '#FFFFFF', // white
+            lighter: '#FAFAFA', // gray-50
+            dark: '#F4F4F5', // zinc-100
+          },
+          dark: {
+            DEFAULT: '#18181B', // zinc-900
+            lighter: '#27272A', // zinc-800
+            dark: '#09090B', // zinc-950
+          },
+        },
         accent: {
           light: {
             DEFAULT: '#FACC15', // yellow-400
@@ -107,6 +119,7 @@ export default {
             dark: '#374151', // gray-700
           },
         },
+        base: {},
         background: {
           light: {
             DEFAULT: '#F3F4F6', // gray-100

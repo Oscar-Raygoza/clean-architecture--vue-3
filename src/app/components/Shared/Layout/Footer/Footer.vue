@@ -33,7 +33,7 @@ const socialNetworks: FooterNavIcons[] = [
 </script>
 
 <template>
-  <footer class="fixed bottom-0 left-0 w-full bg-white text-surface dark:text-white dark:bg-black z-10">
+  <footer class="fixed bottom-0 left-0 w-full bg-default-light dark:text-default-light dark:bg-default-dark z-10">
     <div class="container mx-auto px-4">
       <div class="flex justify-center space-x-4 py-6">
         <router-link

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-background-light w-full h-screen dark:bg-background-dark">
+  <div id="app">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" />

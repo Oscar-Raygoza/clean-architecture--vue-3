@@ -28,30 +28,30 @@ const nav: NavItems[] = [
 ]
 </script>
 <template>
-  <div class="bg-accent-light dark:bg-accent-dark">
+  <div class="bg-brand-primary-light-lighter dark:bg-brand-primary-dark">
     <nav class="flex container mx-auto px-5 py-3">
       <ul class="flex flex-grow space-x-4">
         <li>
-          <a href="/" class="flex items-center space-x-3 text-gray-700 md:mr-5">
+          <router-link to="/" class="flex items-center space-x-3 md:mr-5">
             <span
               class="text-neutral-white-light hover:text-gray-300 text-xl align-center font-semibold"
             >
               <TCGIcon name="main-logo" class="inline-block mr-2" :size="18" />
               <TCGTitle
                 variant="primary"
-                class="!text-neutral-light dark:!text-neutral-dark !text-lg items-center text-center mt-1"
+                class="!text-default-light dark:!text-default-dark !text-lg items-center text-center mt-1"
               >
                 Pokémon TCG
               </TCGTitle>
             </span>
-          </a>
+          </router-link>
         </li>
       </ul>
       <ul class="flex items-center space-x-5">
         <li class="hidden sm:flex" v-for="(link, key) in nav" :key="key">
           <router-link
             :to="link.to"
-            class="text-neutral-dark dark:text-black hover:text-gray-400 text font-semibold py-1 px-3 hover:bg-gray-200 dark:hover:bg-gray-700"
+            class="text-default-light dark:text-default-dark dark:text-blackink link-underline link-underline-black hover:text-default-light text font-semibold py-1 px-3 underline-offset-4 transition duration-30"
             >{{ link.title }}</router-link
           >
         </li>
@@ -62,3 +62,22 @@ const nav: NavItems[] = [
     </nav>
   </div>
 </template>
+
+<style>
+	.link-underline {
+		border-bottom-width: 0;
+		background-size: 0 2px;
+		background-position: 0 100%;
+		background-repeat: no-repeat;
+		transition: background-size .5s ease-in-out;
+	}
+
+	.link-underline-black {
+		background-image: linear-gradient(transparent, transparent), linear-gradient(#3B82F6,#F87171)
+	}
+
+	.link-underline:hover {
+		background-size: 100% 2px;
+		background-position: 0 100%
+	}
+  </style>

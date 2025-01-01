@@ -2,10 +2,10 @@
   <button
     type="button"
     aria-label="Toggle dark mode"
-    class="rounded-lg p-2 transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700"
+    class="rounded-lg p-2 transition-colors duration-200 hover:bg-brand-secondary-light-lighter dark:hover:bg-gray-700"
     @click="toggleTheme"
   >
-    <TCGIcon :key="icon" :name="icon" class="inline-block text-black cursor-pointer dark:text-red-500" :size="22" />
+    <TCGIcon :key="icon" :name="icon" class="inline-block text-default-light cursor-pointer dark:text-red-500" :size="22" />
   </button>
 </template>
 
