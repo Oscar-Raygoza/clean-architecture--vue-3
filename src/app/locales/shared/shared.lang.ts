@@ -1,12 +1,18 @@
 export default {
-  messages: {
-    es: {
-      accept: 'Aceptar',
-      continue: 'Continuar',
-    },
-    en: {
-      accept: 'Accept',
-      continue: 'Continue',
-    },
+  es: {
+    // langs
+    es: 'Español',
+    en: 'Ingles',
+
+    accept: 'Aceptar',
+    continue: 'Continuar',
+  },
+  en: {
+    // langs
+    es: 'Spanish',
+    en: 'English',
+
+    accept: 'Accept',
+    continue: 'Continue',
   },
 }

@@ -6,12 +6,16 @@ import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
 import TCGInput from '@/app/components/Shared/TCGInputs/TCGInput.vue'
 import CardItem from '@/app/components/Card/CardItem.vue'
 
+// i18n
+import { useLocale } from '@/app/composables/useLocale'
+import messages from '@/app/locales/views/HomeView.lang'
+const { t } = useLocale(messages)
+
 // stores
 import { useCardStore } from '../stores/Card/CardStore'
 import type Card from '@/domain/card/entities/Card'
 
 const cardsStore = useCardStore()
-
 
 onMounted(async () => {
   cardsStore.hydrate()
@@ -42,25 +46,17 @@ function getCardPosition(position: number) {
 <template>
   <section id="main-search-page">
     <div class="flex justify-center items-center pt-24 flex-col">
-      <TCGTitle variant="primary"> Pokémon TCG Guru </TCGTitle>
-      <TCGTitle variant="secondary"> The Ultimate Pokémon Card Database </TCGTitle>
-    </div>
-
-    <div class="flex justify-center items-center pt-10">
-      <form class="w-[50%]">
-        <TCGInput
-          id="search"
-          v-model="form.querySearch"
-          placeholder="Search for a card"
-          autofocus
-        />
-      </form>
+      <TCGTitle variant="primary"> Pokémon TCG </TCGTitle>
+      <TCGTitle variant="secondary"> {{ t('mainSubtitle') }}</TCGTitle>
     </div>
 
     <div class="flex justify-center items-center pt-10 flex-col">
-      <TCGTitle variant="secondary">
-        Try "venusaur" or "subtypes:mega" or simply Browse By Set
-      </TCGTitle>
+      <form class="w-[50%]">
+        <TCGInput id="search" v-model="form.querySearch" autofocus />
+      </form>
+      <p class="text-sm text-neutral-light dark:text-neutral-dark mt-5">
+        {{ t('searchHelper') }}
+      </p>
     </div>
 
     <!-- Cards container -->

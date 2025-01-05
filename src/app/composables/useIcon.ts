@@ -5,14 +5,17 @@ import type { Component } from 'vue';
 
 export const useIcons = () => {
   const icons = new Map<IconType, Component>([
+    ['arrow-down', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/shared/arrow-down.icon.vue'))],
     ['dark-mode', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/shared/dark-mode.icon.vue'))],
     ['facebook', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/facebook.icon.vue'))],
     ['github', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/github.icon.vue'))],
+    ['lang', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/lang/lang.icon.vue'))],
     ['linkedin', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/linkedin.icon.vue'))],
     ['main-logo', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/brand/logo.icon.vue'))],
-    ['x', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/x.icon.vue'))],
     ['moon', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/dark-mode/moon.icon.vue'))],
+    ['projects', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/shared/projects.icon.vue'))],
     ['sun', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/dark-mode/sun.icon.vue'))],
+    ['x', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/x.icon.vue'))],
   ]);
 
   return {

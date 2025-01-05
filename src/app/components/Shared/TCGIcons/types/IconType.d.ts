@@ -1,9 +1,12 @@
 export type IconType =
+  | 'arrow-down'
   | 'dark-mode'
   | 'facebook'
   | 'github'
+  | 'lang'
   | 'linkedin'
   | 'main-logo'
   | 'moon'
+  | 'projects'
   | 'sun'
   | 'x'

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
+import TCGLangToggle from '@/app/components/Shared/TCGLangButtons/TCGLangToggle.vue'
+import TCGMenuProjects from "@/app/components/Home/Menu/Projects.vue"
 import TCGThemeToggle from '@/app/components/Shared/TCGThemeButtons/TCGThemeToggle.vue'
 import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
 
@@ -9,14 +11,6 @@ export interface NavItems {
 }
 
 const nav: NavItems[] = [
-  {
-    title: 'TCG Color System',
-    to: '/colors',
-  },
-  {
-    title: 'TCG Architecture',
-    to: '/colors',
-  },
   {
     title: 'About',
     to: '/about',
@@ -48,12 +42,18 @@ const nav: NavItems[] = [
         </li>
       </ul>
       <ul class="flex items-center space-x-5">
+        <li class="hidden sm:flex">
+          <TCGMenuProjects />
+        </li>
         <li class="hidden sm:flex" v-for="(link, key) in nav" :key="key">
           <router-link
             :to="link.to"
             class="text-neutral-dark dark:text-default-light dark:text-blackink link-underline link-underline-black hover:text-default-dark text font-semibold py-1 px-3 underline-offset-4 transition duration-30"
             >{{ link.title }}</router-link
           >
+        </li>
+        <li class="hidden sm:flex">
+          <TCGLangToggle />
         </li>
         <li class="hidden sm:flex">
           <TCGThemeToggle />
@@ -73,7 +73,7 @@ const nav: NavItems[] = [
 	}
 
 	.link-underline-black {
-		background-image: linear-gradient(transparent, transparent), linear-gradient(#3B82F6,#F87171)
+		background-image: linear-gradient(transparent, transparent), linear-gradient(#3B82F6,#FACC15)
 	}
 
 	.link-underline:hover {

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 const MainLayout = () => import('@/app/layouts/MainLayout.vue')
+const ContentLayout = () => import('@/app/layouts/ContentLayout.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,11 +14,21 @@ const router = createRouter({
           component: () => import('@/app/views/HomeView.vue')
         },
         {
-          path: '/search',
+          path: '/colors',
+          component: () => import('@/app/views/TCGSystemColors.vue')
+        },
+      ]
+    },
+    {
+      path: '/search',
+      component: ContentLayout,
+      children: [
+        {
+          path: '',
           component: () => import('@/app/views/SearchView.vue')
         },
         {
-          path: '/colors',
+          path: '/:id',
           component: () => import('@/app/views/TCGSystemColors.vue')
         },
       ]

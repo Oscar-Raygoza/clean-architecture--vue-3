@@ -7,7 +7,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="relative w-[240px] h-[320px] rounded-xl overflow-hidden shadow-xl cursor-pointer">
+  <div class="relative w-[240px] h-auto rounded-xl overflow-hidden shadow-xl cursor-pointer">
     <img :src="props.card?.image" fill class="object-cover" priority />
   </div>
 </template>
