@@ -26,11 +26,14 @@ export const useCardStore = defineStore('CardStore', () => {
 
   // data
   const state = reactive<CardsState>({
-    cards: [],
+    _cards: [],
+    _isHydrated: false
   })
 
   // getters
-  const cards = computed(() => state.cards)
+  const cards = computed(() => state._cards)
+
+  const isHydrated = computed(() => state._isHydrated)
 
   // methods
   async function getRandomCards(port?: FindCardsDto) {
@@ -44,23 +47,25 @@ export const useCardStore = defineStore('CardStore', () => {
       size: port?.size,
     })
 
-    state.cards = cards
+    state._cards = cards
 
     cardStorageDAO.set(cards)
   }
 
   function hydrate() {
     _hydrateRandomCards()
+
+    state._isHydrated = true
   }
 
   function _hydrateRandomCards() {
     const cards = cardStorageDAO.get()
 
     if (cards) {
-      state.cards = cards
+      state._cards = cards
       cardStorageDAO.set(cards)
     }
   }
 
-  return { getRandomCards, hydrate, cards }
+  return { getRandomCards, hydrate, isHydrated, cards }
 })

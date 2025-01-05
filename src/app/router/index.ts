@@ -1,39 +1,50 @@
 import { createRouter, createWebHistory } from 'vue-router'
-const MainLayout = () => import('@/app/layouts/MainLayout.vue')
-const ContentLayout = () => import('@/app/layouts/ContentLayout.vue')
+import type { RouteRecordRaw } from 'vue-router'
+
+// layouts
+import MainLayout from '@/app/layouts/MainLayout.vue'
+import ContentLayout from '@/app/layouts/ContentLayout.vue'
+
+// routes
+import authRoutes from './routes/auth.routes'
+import homeRoutes from './routes/home.routes'
+import searchRoutes from './routes/search.routes'
+import sharedRoutes from './routes/shared.routes'
+
+// redirects
+import redirectsRoutes from './routes/redirects.routes'
+
+const routes: RouteRecordRaw[] = [
+  {
+    path: '/',
+    component: MainLayout,
+    children: homeRoutes,
+  },
+  {
+    path: '/search',
+    component: ContentLayout,
+    children: searchRoutes,
+  },
+  {
+    path: '/auth',
+    component: MainLayout,
+    children: authRoutes,
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: MainLayout,
+    children: sharedRoutes,
+    meta: {
+      layout: 'MainLayout'
+    }
+  },
+  ...redirectsRoutes
+]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      component: MainLayout,
-      children: [
-        {
-          path: '',
-          component: () => import('@/app/views/HomeView.vue')
-        },
-        {
-          path: '/colors',
-          component: () => import('@/app/views/TCGSystemColors.vue')
-        },
-      ]
-    },
-    {
-      path: '/search',
-      component: ContentLayout,
-      children: [
-        {
-          path: '',
-          component: () => import('@/app/views/SearchView.vue')
-        },
-        {
-          path: '/:id',
-          component: () => import('@/app/views/TCGSystemColors.vue')
-        },
-      ]
-    },
-  ],
+  history: createWebHistory(import.meta.env.VITE_BASE_URL),
+  routes
 })
 
 export default router

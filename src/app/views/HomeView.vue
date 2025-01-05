@@ -8,7 +8,7 @@ import CardItem from '@/app/components/Card/CardItem.vue'
 
 // i18n
 import { useLocale } from '@/app/composables/useLocale'
-import messages from '@/app/locales/views/HomeView.lang'
+import messages from '@/app/locales/views/Home/HomeView.lang'
 const { t } = useLocale(messages)
 
 // stores
@@ -18,7 +18,7 @@ import type Card from '@/domain/card/entities/Card'
 const cardsStore = useCardStore()
 
 onMounted(async () => {
-  cardsStore.hydrate()
+  if (!cardsStore.isHydrated) cardsStore.hydrate()
 
   if (!cardsStore.cards.length) await cardsStore.getRandomCards()
 })
@@ -59,7 +59,6 @@ function getCardPosition(position: number) {
       </p>
     </div>
 
-    <!-- Cards container -->
     <section id="container-random-cards" class="relative w-full max-w-4xl mx-auto my-20">
       <div
         v-for="(card, position) in cards"
