@@ -11,7 +11,7 @@ interface Translations {
 }
 
 export function useLocale(messages: Translations) {
-  const { setStoredLanguage, getStoredLanguage } = useLanguageStorage()
+  const { setStoredLanguage, getStoredLanguage, initLanguageSotarge } = useLanguageStorage()
 
   const i18n = useI18n({
     messages,
@@ -20,6 +20,7 @@ export function useLocale(messages: Translations) {
   const { locale } = useI18n()
 
   onMounted(() => {
+    initLanguageSotarge();
     changeLocale(getStoredLanguage() as Langs)
   })
 

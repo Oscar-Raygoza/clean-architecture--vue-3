@@ -11,7 +11,7 @@ import Card from '@/domain/card/entities/Card'
 import type { CardRepository } from '@/domain/card/repository/CardRepository'
 import type { CardsState } from './types/CardState'
 
-import type { DataObjectStorage } from '@/infrastructure/persistence/enum/DataObjectStorage'
+import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistentStorageRepository'
 
 // dto's
 import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
@@ -20,20 +20,23 @@ export const useCardStore = defineStore('CardStore', () => {
   // repositories
   const cardsRepository = container.get<CardRepository>(cardTypes.cardsServiceRepository)
 
-  const cardStorageDAO = container.get<DataObjectStorage<Card[]>>(
-    cardTypes.cardStorageDAO,
+  const randomCardsStorageRepository = container.get<PersistentStorageRepository<Card[]>>(
+    cardTypes.randomCardsStorageRepository,
   )
 
   // data
   const state = reactive<CardsState>({
     _cards: [],
-    _isHydrated: false
+    _isHydrated: false,
+    _randomCards: [],
   })
 
   // getters
   const cards = computed(() => state._cards)
 
   const isHydrated = computed(() => state._isHydrated)
+
+  const randomCards = computed(() => state._randomCards)
 
   // methods
   async function getRandomCards(port?: FindCardsDto) {
@@ -47,9 +50,9 @@ export const useCardStore = defineStore('CardStore', () => {
       size: port?.size,
     })
 
-    state._cards = cards
+    state._randomCards = cards
 
-    cardStorageDAO.set(cards)
+    randomCardsStorageRepository.set(cards)
   }
 
   function hydrate() {
@@ -59,13 +62,13 @@ export const useCardStore = defineStore('CardStore', () => {
   }
 
   function _hydrateRandomCards() {
-    const cards = cardStorageDAO.get()
+    const cards = randomCardsStorageRepository.get()
 
     if (cards) {
-      state._cards = cards
-      cardStorageDAO.set(cards)
+      state._randomCards = cards
+      randomCardsStorageRepository.set(cards)
     }
   }
 
-  return { getRandomCards, hydrate, isHydrated, cards }
+  return { getRandomCards, hydrate, isHydrated, cards, randomCards }
 })

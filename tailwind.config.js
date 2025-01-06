@@ -1,11 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 import defaultTheme from 'tailwindcss/defaultTheme'
-
+import flowbite from 'flowbite/plugin'
 const sans = defaultTheme.fontFamily.sans.filter((font) => font !== 'Roboto')
 
 export default {
   darkMode: ['class'],
-  content: ['./src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: [
+    './src/**/*.{vue,js,ts,jsx,tsx}',
+    'node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx,vue}',
+    'node_modules/flowbite/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     fontFamily: {
       sans: ['Lato', ...sans],

@@ -3,7 +3,9 @@ import { createI18n } from 'vue-i18n'
 import { Langs } from '@/application/lang/storage/enum/Langs'
 import { useLanguageStorage } from "@/app/composables/useLanguageStorage"
 
-const { getStoredLanguage } = useLanguageStorage()
+const { getStoredLanguage, initLanguageSotarge } = useLanguageStorage()
+
+initLanguageSotarge();
 
 const locales = [
   { code: Langs.ES, name: 'spanish' },

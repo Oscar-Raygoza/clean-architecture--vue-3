@@ -7,10 +7,10 @@ import Footer from '@/app/components/Shared/Layout/Footer/Footer.vue'
 
 <template>
   <SimpleNavbar />
-  <div>
+  <section>
     <RouterView v-slot="{ Component }">
         <component :is="Component" />
     </RouterView>
-  </div>
+  </section>
   <Footer />
 </template>

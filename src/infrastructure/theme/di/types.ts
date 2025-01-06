@@ -1,3 +1,3 @@
 export default {
-  themeStorageDAO: Symbol('ThemeStorageDAO'),
+  themeStorageRepository: Symbol('ThemeStorageRepository'),
 }

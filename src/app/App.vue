@@ -1,13 +1,16 @@
 <template>
- <main>
-    <transition name="fade" mode="out-in">
-      <router-view v-slot="{ Component }" >
-        <component :is="Component" />
-      </router-view>
-    </transition>
+  <main>
+    <router-view v-slot="{ Component }">
+      <component :is="Component">
+        <template #default="props">
+          <transition name="fade" mode="out-in">
+            <slot v-bind="props" />
+          </transition>
+        </template>
+      </component>
+    </router-view>
   </main>
 </template>
-
 <style>
 .fade-enter-active,
 .fade-leave-active {
@@ -20,6 +23,6 @@
 }
 
 body * {
-  @apply transition-colors duration-200;
+  @apply transition-colors duration-100;
 }
 </style>

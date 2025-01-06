@@ -14,7 +14,7 @@
       </p>
       <router-link
         to="/"
-        class="inline-flex text-default-light md:text-4xl dark:text-default-light bg-brand-primary-light dark:bg-brand-primary-dark hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4"
+        class="uppercase font-bold inline-flex text-default-light md:text-md dark:text-default-light bg-brand-primary-light dark:bg-brand-primary-dark hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4"
         >Back to Homepage</router-link>
     </div>
   </div>

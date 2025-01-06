@@ -5,6 +5,7 @@ import { onMounted, computed, reactive } from 'vue'
 import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
 import TCGInput from '@/app/components/Shared/TCGInputs/TCGInput.vue'
 import CardItem from '@/app/components/Card/CardItem.vue'
+import TCGBadge from '@/app/components/Shared/TCGBadge/TCGBadge.vue'
 
 // i18n
 import { useLocale } from '@/app/composables/useLocale'
@@ -20,10 +21,10 @@ const cardsStore = useCardStore()
 onMounted(async () => {
   if (!cardsStore.isHydrated) cardsStore.hydrate()
 
-  if (!cardsStore.cards.length) await cardsStore.getRandomCards()
+  if (!cardsStore.randomCards.length) await cardsStore.getRandomCards()
 })
 
-const cards = computed(() => cardsStore.cards) as unknown as Card[]
+const cards = computed(() => cardsStore.randomCards) as unknown as Card[]
 
 // state
 const form = reactive({

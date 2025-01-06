@@ -1,3 +1,3 @@
 export default {
-  langStorageDAO: Symbol('LangStorageDAO'),
+  langStorageRepository: Symbol('LangStorageRepository'),
 }

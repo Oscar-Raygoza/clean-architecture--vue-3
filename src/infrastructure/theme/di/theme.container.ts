@@ -3,13 +3,12 @@ import type { interfaces } from 'inversify'
 
 // types
 import themeTypes from '@/infrastructure/theme/di/types'
-import type { DataObjectStorage } from '@/infrastructure/persistence/enum/DataObjectStorage'
+import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistentStorageRepository'
 
-// dao
-import { ThemeStorageDAO } from '@/infrastructure/theme/dao/ThemeStorageDAO'
+// repositories
+import { ThemeStorageRepository } from '@/infrastructure/theme/repository/ThemeStorageRepository'
 import type { Themes } from '@/application/theme/storage/enum/Themes'
 
 export default new ContainerModule((bind: interfaces.Bind) => {
-  // data objects
-  bind<DataObjectStorage<Themes>>(themeTypes.themeStorageDAO).to(ThemeStorageDAO)
+  bind<PersistentStorageRepository<Themes>>(themeTypes.themeStorageRepository).to(ThemeStorageRepository)
 })

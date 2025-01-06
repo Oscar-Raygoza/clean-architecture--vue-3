@@ -7,16 +7,14 @@
           <line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
       </div>
-
-      <!-- Input -->
       <input
         type="text"
+        id="default_standard"
         :value="modelValue"
         @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-        placeholder="Search for a card..."
+        placeholder="Search ..."
         class="pl-10 pr-10 w-full bg-transparent border-neutral-light-lighter appearance-none border-b-2 py-4 px-3 text-neutral-dark leading-tight focus:border-brand-primary-light dark:focus:border-brand-primary-dark focus:outline-none"
       />
-
       <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
         <svg
           @click="toggleFilter"

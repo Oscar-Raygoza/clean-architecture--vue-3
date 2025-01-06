@@ -5,11 +5,11 @@ import { container } from '@/container'
 import themeTypes from '@/infrastructure/theme/di/types'
 import { Themes } from '@/application/theme/storage/enum/Themes'
 
-import type { DataObjectStorage } from '@/infrastructure/persistence/enum/DataObjectStorage'
+import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistentStorageRepository'
 
 export function useTheme() {
-  const themeStorageDAO = container.get<DataObjectStorage<Themes>>(
-    themeTypes.themeStorageDAO,
+  const themeStorageRepository = container.get<PersistentStorageRepository<Themes>>(
+    themeTypes.themeStorageRepository,
   )
 
   const isDark = ref<boolean>(false)
@@ -21,7 +21,7 @@ export function useTheme() {
   const updateTheme = (value: boolean): void => {
     isDark.value = value
 
-    themeStorageDAO.set(isDark.value ? Themes.DARK : Themes.LIGHT)
+    themeStorageRepository.set(isDark.value ? Themes.DARK : Themes.LIGHT)
 
     document.documentElement.classList.toggle('dark', value)
   }
@@ -31,7 +31,7 @@ export function useTheme() {
   }
 
   const initTheme = (): void => {
-    const theme = themeStorageDAO.get()
+    const theme = themeStorageRepository.get()
 
     if (theme) {
       updateTheme(theme === Themes.DARK)
@@ -44,7 +44,7 @@ export function useTheme() {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
     mediaQuery.addEventListener('change', (event: MediaQueryListEvent) => {
-      if (!themeStorageDAO.get()) {
+      if (!themeStorageRepository.get()) {
         updateTheme(event.matches)
       }
     })

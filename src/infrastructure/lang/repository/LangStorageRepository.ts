@@ -3,14 +3,14 @@ import { inject, injectable } from 'inversify'
 // types
 import persistenceTypes from '@/infrastructure/persistence/di/types'
 
-import type { DataObjectStorage } from '@/infrastructure/persistence/enum/DataObjectStorage'
+import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistentStorageRepository'
 import type { PersistenceRepository } from '@/infrastructure/persistence/repository/PersistenceRepository'
 
 import { Langs } from '@/application/lang/storage/enum/Langs'
 import { StorageLangKeys } from '@/application/lang/storage/enum/StorageLangKeys'
 
 @injectable()
-export class LangStorageDAO implements DataObjectStorage<Langs> {
+export class LangStorageRepository implements PersistentStorageRepository<Langs> {
   constructor(
     @inject(persistenceTypes.localStorageManagerRepository)
     private readonly storageManager: PersistenceRepository,

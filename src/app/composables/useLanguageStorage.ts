@@ -2,25 +2,27 @@ import { container } from '@/container'
 import langTypes from '@/infrastructure/lang/di/types'
 
 import { Langs } from '@/application/lang/storage/enum/Langs'
-import type { DataObjectStorage } from '@/infrastructure/persistence/enum/DataObjectStorage'
-import { onMounted } from 'vue'
+import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistentStorageRepository'
 
 export function useLanguageStorage() {
-  const langStorageDAO = container.get<DataObjectStorage<Langs>>(langTypes.langStorageDAO)
+  const langStorageRepository = container.get<PersistentStorageRepository<Langs>>(
+    langTypes.langStorageRepository,
+  )
 
-  onMounted(() => {
-    langStorageDAO.set(langStorageDAO.get())
-  })
+  const initLanguageSotarge = () => {
+    langStorageRepository.set(langStorageRepository.get())
+  }
 
   const getStoredLanguage = (): string => {
-    return langStorageDAO.get()
+    return langStorageRepository.get()
   }
 
   const setStoredLanguage = (lang: Langs) => {
-    langStorageDAO.set(lang)
+    langStorageRepository.set(lang)
   }
 
   return {
+    initLanguageSotarge,
     getStoredLanguage,
     setStoredLanguage,
   }
