@@ -152,4 +152,5 @@ export default {
       },
     },
   },
+  plugins: [flowbite()],
 }
