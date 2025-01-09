@@ -1,15 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+import flyonui from 'flyonui'
+import flyonuiJs from 'flyonui/plugin'
+
 import defaultTheme from 'tailwindcss/defaultTheme'
-import flowbite from 'flowbite/plugin'
 const sans = defaultTheme.fontFamily.sans.filter((font) => font !== 'Roboto')
 
 export default {
   darkMode: ['class'],
-  content: [
-    './src/**/*.{vue,js,ts,jsx,tsx}',
-    'node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx,vue}',
-    'node_modules/flowbite/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ['./src/**/*.{vue,js,ts,jsx,tsx}', './node_modules/flyonui/dist/js/*.js'],
   theme: {
     fontFamily: {
       sans: ['Lato', ...sans],
@@ -152,5 +150,57 @@ export default {
       },
     },
   },
-  plugins: [flowbite()],
+  plugins: [flyonui, flyonuiJs],
+  flyonui: {
+    themes: [
+      {
+        light: {
+          "primary": "#3B82F6", // blue-500
+          "primary-content": "#FFFFFF",
+          "secondary": "#EF4444", // red-500
+          "secondary-content": "#FFFFFF",
+          "accent": "#FACC15", // yellow-400
+          "accent-content": "#18181B",
+          "neutral": "#6B7280", // gray-500
+          "neutral-content": "#FFFFFF",
+          "base-100": "#FFFFFF", // default light background
+          "base-200": "#F4F4F5", // zinc-100
+          "base-300": "#E5E7EB", // gray-200
+          "base-content": "#18181B", // zinc-900
+          "info": "#3B82F6", // blue-500
+          "info-content": "#FFFFFF",
+          "success": "#22C55E", // green-500
+          "success-content": "#FFFFFF",
+          "warning": "#F97316", // orange-500
+          "warning-content": "#FFFFFF",
+          "error": "#DC2626", // red-600
+          "error-content": "#FFFFFF"
+        }
+      },
+      {
+        dark: {
+          "primary": "#60A5FA", // blue-400
+          "primary-content": "#010811",
+          "secondary": "#F87171", // red-400
+          "secondary-content": "#130201",
+          "accent": "#FDE047", // yellow-300
+          "accent-content": "#1F2937",
+          "neutral": "#4B5563", // gray-600
+          "neutral-content": "#FFFFFF",
+          "base-100": "#111827", // gray-900
+          "base-200": "#27272A", // zinc-800
+          "base-300": "#18181B", // zinc-900
+          "base-content": "#F9FAFB", // gray-50
+          "info": "#60A5FA", // blue-400
+          "info-content": "#FFFFFF",
+          "success": "#4ADE80", // green-400
+          "success-content": "#FFFFFF",
+          "warning": "#FB923C", // orange-400
+          "warning-content": "#FFFFFF",
+          "error": "#EF4444", // red-500
+          "error-content": "#FFFFFF"
+        }
+      }
+    ],
+  },
 }

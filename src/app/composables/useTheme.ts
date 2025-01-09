@@ -21,9 +21,12 @@ export function useTheme() {
   const updateTheme = (value: boolean): void => {
     isDark.value = value
 
-    themeStorageRepository.set(isDark.value ? Themes.DARK : Themes.LIGHT)
+    const theme = isDark.value ? Themes.DARK : Themes.LIGHT;
 
-    document.documentElement.classList.toggle('dark', value)
+    themeStorageRepository.set(theme)
+
+    document.documentElement.classList.toggle(Themes.DARK, value)
+    document.querySelector('html')?.setAttribute('data-theme', theme)
   }
 
   const toggleTheme = (): void => {

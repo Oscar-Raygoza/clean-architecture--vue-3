@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n'
 
 import { Langs } from '@/application/lang/storage/enum/Langs'
-import { useLanguageStorage } from "@/app/composables/useLanguageStorage"
+import { useLanguageStorage } from "@/app/composables/locale/useLanguageStorage"
 
 const { getStoredLanguage, initLanguageSotarge } = useLanguageStorage()
 

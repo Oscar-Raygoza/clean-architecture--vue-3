@@ -8,7 +8,7 @@ import CardItem from '@/app/components/Card/CardItem.vue'
 import TCGBadge from '@/app/components/Shared/TCGBadge/TCGBadge.vue'
 
 // i18n
-import { useLocale } from '@/app/composables/useLocale'
+import { useLocale } from '@/app/composables/locale/useLocale'
 import messages from '@/app/locales/views/Home/HomeView.lang'
 const { t } = useLocale(messages)
 

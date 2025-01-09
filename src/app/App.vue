@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="bg-background-light w-full min-h-screen dark:bg-background-dark">
     <router-view v-slot="{ Component }">
       <component :is="Component">
         <template #default="props">

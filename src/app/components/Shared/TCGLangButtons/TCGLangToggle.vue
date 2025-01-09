@@ -20,7 +20,7 @@ import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
 import TCGSelector from '@/app/components/Shared/TCGSelector/TCGSelector.vue'
 
 // i18n
-import { useLocale } from '@/app/composables/useLocale'
+import { useLocale } from '@/app/composables/locale/useLocale'
 import messages from '@/app/locales/shared/shared.lang'
 import type { Langs } from '@/application/lang/storage/enum/Langs'
 import { computed, ref } from 'vue'

@@ -1,49 +1,56 @@
 <template>
-  <label class="inline-flex items-center me-5 cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer" checked />
-    <div
-      class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"
-    ></div>
-    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Red</span>
-  </label>
+  <button class="btn btn-primary bg-brand-primary-dark dark:bg-brand-primary-light hover:!bg-brand-primary-lighter">Button</button>
+  <button
+    type="button"
+    data-theme="custom-theme"
+    class="btn btn-primary"
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    aria-controls="overlay-example"
+    data-overlay="#overlay-example"
+  >
+    Open drawer
+  </button>
 
-  <label class="inline-flex items-center me-5 cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer" checked />
-    <div
-      class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"
-    ></div>
-    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Green</span>
-  </label>
+  <div
+    id="overlay-example"
+    class="overlay overlay-open:translate-x-0 drawer drawer-end hidden"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div class="drawer-header">
+      <h3 class="drawer-title">Drawer Title</h3>
+      <button
+        type="button"
+        class="btn btn-text btn-circle btn-sm absolute end-3 top-3"
+        aria-label="Close"
+        data-overlay="#overlay-example"
+      >
+        <span class="icon-[tabler--x] size-5"></span>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <p>
+        Some text as placeholder. In real life you can have the elements you
+        have chosen. Like, text, images, lists, etc.
+      </p>
+    </div>
+    <div class="drawer-footer">
+      <button
+        type="button"
+        class="btn btn-soft btn-secondary"
+        data-overlay="#overlay-example"
+      >
+        Close
+      </button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
 
-  <label class="inline-flex items-center me-5 cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer" checked />
-    <div
-      class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"
-    ></div>
-    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Purple</span>
-  </label>
-
-  <label class="inline-flex items-center me-5 cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer" checked />
-    <div
-      class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-yellow-400"
-    ></div>
-    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Yellow</span>
-  </label>
-
-  <label class="inline-flex items-center me-5 cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer" checked />
-    <div
-      class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"
-    ></div>
-    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Teal</span>
-  </label>
-
-  <label class="inline-flex items-center me-5 cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer" checked />
-    <div
-      class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-orange-300 dark:peer-focus:ring-orange-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-orange-500"
-    ></div>
-    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Orange</span>
-  </label>
+  <div class="mockup-browser bg-base-300">
+  <div class="mockup-browser-toolbar">
+    <div class="input bg-base-200">https://flyonui.com</div>
+  </div>
+  <div class="flex h-80 justify-center"><img class="w-full object-cover" src="https://cdn.flyonui.com/fy-assets/components/carousel/image-14.png" alt="browser background" /></div>
+</div>
 </template>

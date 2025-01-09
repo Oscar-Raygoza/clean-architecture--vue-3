@@ -1,14 +1,11 @@
+import { computed, onMounted } from 'vue'
+
 import { useI18n } from 'vue-i18n'
 
 import type { Langs } from '@/application/lang/storage/enum/Langs'
-import { useLanguageStorage } from '@/app/composables/useLanguageStorage'
-import { computed, onMounted } from 'vue'
+import type { Translations } from '@/application/lang/storage/dto/Translations'
 
-interface Translations {
-  [key: string]: {
-    [key: string]: string
-  }
-}
+import { useLanguageStorage } from '@/app/composables/locale/useLanguageStorage'
 
 export function useLocale(messages: Translations) {
   const { setStoredLanguage, getStoredLanguage, initLanguageSotarge } = useLanguageStorage()
@@ -21,6 +18,7 @@ export function useLocale(messages: Translations) {
 
   onMounted(() => {
     initLanguageSotarge();
+
     changeLocale(getStoredLanguage() as Langs)
   })
 
@@ -44,6 +42,9 @@ export function useLocale(messages: Translations) {
     availableLocales: computed(() => i18n.availableLocales),
     changeLocale,
     currentLocale,
+    d: i18n.d,
     t: i18n.t,
+    te: i18n.te,
+    tm: i18n.tm,
   }
 }

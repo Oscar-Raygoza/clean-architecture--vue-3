@@ -15,7 +15,7 @@ const { getIcon } = useIcons()
 const ProjectIcon = getIcon('projects')!
 
 // i18n
-import { useLocale } from '@/app/composables/useLocale'
+import { useLocale } from '@/app/composables/locale/useLocale'
 import messages from '@/app/locales/views/Home/components/Project.lang'
 const { t } = useLocale(messages)
 

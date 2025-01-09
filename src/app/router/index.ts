@@ -14,6 +14,9 @@ import sharedRoutes from './routes/shared.routes'
 // redirects
 import redirectsRoutes from './routes/redirects.routes'
 
+// middlewares
+import { useFlyonUIMiddleware } from './middlewares/useFlyonUIMiddleware'
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -46,5 +49,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes
 })
+
+useFlyonUIMiddleware(router)
 
 export default router
