@@ -155,7 +155,7 @@ export default {
     themes: [
       {
         light: {
-          primary: '#3B82F6',
+          primary: '#60A5FA',
           'primary-content': '#FFFFFF',
           secondary: '#EF4444',
           'secondary-content': '#FFFFFF',

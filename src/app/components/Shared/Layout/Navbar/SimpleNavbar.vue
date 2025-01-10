@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
 import TCGLangToggle from '@/app/components/Shared/TCGLangButtons/TCGLangToggle.vue'
-import TCGMenuProjects from "@/app/components/Home/Menu/Projects.vue"
+import TCGMenuProjects from "@/app/components/Shared/Layout/Navbar/Menu/Projects.vue"
 import TCGThemeToggle from '@/app/components/Shared/TCGThemeButtons/TCGThemeToggle.vue'
 import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
 

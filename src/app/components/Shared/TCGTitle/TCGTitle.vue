@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const classesByVariants = computed(() => {
   const classes: Record<VariantType, string> = {
-    primary: 'text-4xl font-bold text-brand-primary dark:text-white inline-block',
+    primary: 'text-4xl font-bold text-brand-primary-light dark:text-brand-primary-dark inline-block',
     secondary: '!text-lg !font-normal !font-sans text-brand-primary dark:text-white inline-block',
   }
 

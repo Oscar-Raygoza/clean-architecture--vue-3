@@ -7,7 +7,7 @@ import { useIcons } from '@/app//composables/useIcon'
 
 const props = defineProps<{
   size?: number
-  name?: IconType
+  name?: IconType | string
 }>()
 
 const slots: SetupContext['slots'] = useSlots()

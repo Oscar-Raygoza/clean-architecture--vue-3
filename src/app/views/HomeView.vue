@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref } from 'vue'
 
 // components
 import CardItem from '@/app/components/Card/CardItem.vue'
-import SearchCards from '@/app/components/Home/Forms/SearchCards.vue'
+import SearchCards from '@/app/components/Card/Forms/SearchCards.vue'
 import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
 
 // i18n
@@ -14,6 +14,7 @@ const { t } = useLocale(messages)
 // stores
 import { useCardStore } from '../stores/Card/CardStore'
 import type Card from '@/domain/card/entities/Card'
+import DrawerFiltersCards from '../components/Card/Filters/DrawerFiltersCards.vue'
 
 const cardsStore = useCardStore()
 
@@ -23,8 +24,13 @@ onMounted(async () => {
   if (!cardsStore.randomCards.length) await cardsStore.getRandomCards()
 })
 
+// state
+const showFilters = ref<boolean>(false)
+
+// getters
 const cards = computed(() => cardsStore.randomCards) as unknown as Card[]
 
+// methods
 function getCardPosition(position: number) {
   const offsetX = 200
   const offsetY = 20
@@ -36,6 +42,11 @@ function getCardPosition(position: number) {
     transform: `rotate(${rotation}deg)`,
   }
 }
+
+function toggleFilters() {
+  console.log('toggleFilters')
+  showFilters.value = !showFilters.value
+}
 </script>
 
 <template>
@@ -46,7 +57,8 @@ function getCardPosition(position: number) {
     </div>
 
     <div class="flex justify-center items-center pt-10 flex-col">
-      <SearchCards />
+      <SearchCards @open-filters="toggleFilters" />
+      <DrawerFiltersCards :show="showFilters" />
       <p class="text-sm text-neutral-light mt-5">
         {{ t('searchHelper') }}
       </p>
@@ -64,7 +76,6 @@ function getCardPosition(position: number) {
     </section>
   </section>
 </template>
-
 <style scoped>
 .card-wrapper {
   transform-style: preserve-3d;
