@@ -1,7 +1,7 @@
 <template>
-  <h1 :class="[classesByVariants, classesByPropsValues]">
+  <component :is="props.component || 'h1'" :class="[classesByVariants, classesByPropsValues]">
     <slot />
-  </h1>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -10,6 +10,7 @@ import { computed } from 'vue'
 type VariantType = 'primary' | 'secondary'
 
 interface Props {
+  component?: string
   variant?: VariantType
   uppercase?: boolean
 }

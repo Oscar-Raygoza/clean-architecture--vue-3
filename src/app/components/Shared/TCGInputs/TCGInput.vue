@@ -1,54 +1,82 @@
 <template>
-  <div class="w-full space-y-2">
+  <div class="w-full">
+    <label v-if="label" :for="id" class="block text-sm font-medium mb-2">{{ label }}</label>
     <div class="relative">
-      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"/>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
+      <div
+        v-if="$slots.prepend"
+        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+      >
+        <slot name="prepend" />
       </div>
       <input
-        type="text"
-        id="default_standard"
-        :value="modelValue"
-        @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-        placeholder="Search ..."
-        class="pl-10 pr-10 w-full bg-transparent border-neutral-light-lighter appearance-none border-b-2 py-4 px-3 text-neutral-dark leading-tight focus:border-brand-primary-light dark:focus:border-brand-primary-dark focus:outline-none"
+        :id="props.id"
+        :type="props.type"
+        :value="props.modelValue"
+        :placeholder="props.placeholder"
+        :disabled="props.disabled"
+        :readonly="props.readonly"
+        :required="props.required"
+        :name="props.name"
+        :autocomplete="props.autocomplete"
+        :class="[
+          'w-full bg-transparent border-neutral-light-lighter appearance-none border-b-2 py-4 px-3 text-neutral-dark leading-tight',
+          'focus:border-brand-primary-light dark:focus:border-brand-primary-dark focus:outline-none',
+          { 'opacity-50 cursor-not-allowed': disabled },
+          { 'pl-10': $slots.prepend },
+          { 'pr-10': $slots.append },
+        ]"
+        @input="onInput"
+        @blur="onBlur"
+        @focus="onFocus"
       />
-      <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-        <svg
-          @click="toggleFilter"
-          class="h-4 w-4 text-gray-500 cursor-pointer hover:text-gray-700 transition-colors"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-        </svg>
+      <div v-if="$slots.append" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+        <slot name="append" />
       </div>
     </div>
+    <p v-if="error" class="mt-1 text-sm text-red-600">{{ error }}</p>
+    <p v-else-if="hint" class="mt-1 text-sm text-gray-500">{{ hint }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineEmits, defineProps } from 'vue'
-
-// Props
-const props = defineProps<{
+interface Props {
   modelValue: string
-}>()
+  type?: string
+  label?: string
+  placeholder?: string
+  disabled?: boolean
+  readonly?: boolean
+  required?: boolean
+  name?: string
+  id?: string
+  autocomplete?: string
+  error?: string
+  hint?: string
+}
 
-// Emits
+const props = withDefaults(defineProps<Props>(), {
+  type: 'text',
+  disabled: false,
+  readonly: false,
+  required: false,
+})
+
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
-  (e: 'filter'): void
+  'update:modelValue': [value: string]
+  blur: [event: FocusEvent]
+  focus: [event: FocusEvent]
 }>()
 
-// Methods
-const toggleFilter = () => {
-  emit('filter')
+const onInput = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  emit('update:modelValue', target.value)
+}
+
+const onBlur = (event: FocusEvent) => {
+  emit('blur', event)
+}
+
+const onFocus = (event: FocusEvent) => {
+  emit('focus', event)
 }
 </script>

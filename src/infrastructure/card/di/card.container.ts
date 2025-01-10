@@ -18,6 +18,13 @@ import CardServiceRepository from '@/infrastructure/card/repository/CardServiceR
 import type MapperType from '@/application/common/mapper/type/MapperType'
 import PersistentCardsMapper from '@/application/card/storage/mapper/PersistentCardsMapper'
 
+// use cases
+import type UseCase from '@/application/common/useCase/UseCase'
+import FindRandomCardsUseCase from '@/application/card/useCase/FindRandomCardsUseCase'
+
+// dtos
+import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
+
 export default new ContainerModule((bind: interfaces.Bind) => {
   // mappers
   bind<MapperType<StorageCardsDto, Card>>(cardTypes.persistentCardsMapper).to(PersistentCardsMapper)
@@ -27,5 +34,10 @@ export default new ContainerModule((bind: interfaces.Bind) => {
 
   bind<PersistentStorageRepository<Card[]>>(cardTypes.randomCardsStorageRepository).to(
     RandmonCardsStorageRepository,
+  )
+
+  // use cases
+  bind<UseCase<Omit<FindCardsDto, 'query'>, Card[]>>(cardTypes.getRandomCardsUseCase).to(
+    FindRandomCardsUseCase,
   )
 })

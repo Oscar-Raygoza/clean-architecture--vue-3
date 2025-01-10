@@ -10,5 +10,5 @@ export default interface UseCase<P, T> {
    * @return {Promise<T>}
    * @description executes Class responsibility
    */
-  run(port: P): Promise<T> | T
+  run(port?: P): Promise<T> | T
 }

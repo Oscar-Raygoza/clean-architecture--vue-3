@@ -1,11 +1,10 @@
 import type { RouteRecordRaw } from 'vue-router'
-import HomeView from '@/app/views/HomeView.vue'
 
 const routes: RouteRecordRaw[] = [
   {
     path: '',
     name: 'Home',
-    component: HomeView,
+    component: import('@/app/views/HomeView.vue'),
     meta: {
       title: 'Home',
       requiresAuth: false

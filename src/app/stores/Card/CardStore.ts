@@ -8,17 +8,22 @@ import { defineStore } from 'pinia'
 import Card from '@/domain/card/entities/Card'
 
 // repositories
-import type { CardRepository } from '@/domain/card/repository/CardRepository'
-import type { CardsState } from './types/CardState'
-
 import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistentStorageRepository'
 
 // dto's
 import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
 
+// useCase
+import type UseCase from '@/application/common/useCase/UseCase'
+
+// state
+import type { CardsState } from './types/CardState'
+
 export const useCardStore = defineStore('CardStore', () => {
   // repositories
-  const cardsRepository = container.get<CardRepository>(cardTypes.cardsServiceRepository)
+  const getRandomCardsUseCase = container.get<UseCase<Omit<FindCardsDto, 'query'>, Card[]>>(
+    cardTypes.getRandomCardsUseCase,
+  )
 
   const randomCardsStorageRepository = container.get<PersistentStorageRepository<Card[]>>(
     cardTypes.randomCardsStorageRepository,
@@ -39,16 +44,8 @@ export const useCardStore = defineStore('CardStore', () => {
   const randomCards = computed(() => state._randomCards)
 
   // methods
-  async function getRandomCards(port?: FindCardsDto) {
-    const MAX_VALUE_TO_GET_POKEMON = 151
-
-    const pokemonPosition = Math.floor(Math.random() * MAX_VALUE_TO_GET_POKEMON) + 1
-
-    const cards: Card[] = await cardsRepository.find({
-      query: `nationalPokedexNumbers:[${pokemonPosition} TO ${pokemonPosition + 4}]`,
-      page: port?.page,
-      size: port?.size,
-    })
+  async function getRandomCards(port?: Omit<FindCardsDto, 'query'>) {
+    const cards: Card[] = await getRandomCardsUseCase.run(port)
 
     state._randomCards = cards
 

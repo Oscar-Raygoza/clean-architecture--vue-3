@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { onMounted, computed, reactive } from 'vue'
+import { onMounted, computed } from 'vue'
 
 // components
-import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
-import TCGInput from '@/app/components/Shared/TCGInputs/TCGInput.vue'
 import CardItem from '@/app/components/Card/CardItem.vue'
-import TCGBadge from '@/app/components/Shared/TCGBadge/TCGBadge.vue'
+import SearchCards from '@/app/components/Home/Forms/SearchCards.vue'
+import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
 
 // i18n
 import { useLocale } from '@/app/composables/locale/useLocale'
@@ -26,11 +25,6 @@ onMounted(async () => {
 
 const cards = computed(() => cardsStore.randomCards) as unknown as Card[]
 
-// state
-const form = reactive({
-  querySearch: '',
-})
-
 function getCardPosition(position: number) {
   const offsetX = 200
   const offsetY = 20
@@ -45,17 +39,15 @@ function getCardPosition(position: number) {
 </script>
 
 <template>
-  <section id="main-search-page">
+  <section id="main-search-page" class="main-search-page">
     <div class="flex justify-center items-center pt-24 flex-col">
       <TCGTitle variant="primary"> Pokémon TCG </TCGTitle>
-      <TCGTitle variant="secondary"> {{ t('mainSubtitle') }}</TCGTitle>
+      <TCGTitle variant="secondary" component="h2"> {{ t('mainSubtitle') }}</TCGTitle>
     </div>
 
     <div class="flex justify-center items-center pt-10 flex-col">
-      <form class="w-[50%]">
-        <TCGInput id="search" v-model="form.querySearch" autofocus />
-      </form>
-      <p class="text-sm text-neutral-light dark:text-neutral-dark mt-5">
+      <SearchCards />
+      <p class="text-sm text-neutral-light mt-5">
         {{ t('searchHelper') }}
       </p>
     </div>
