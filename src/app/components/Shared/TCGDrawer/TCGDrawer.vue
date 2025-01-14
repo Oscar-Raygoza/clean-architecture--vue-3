@@ -62,19 +62,17 @@ const handleClickOutside = () => {
 
 onMounted(() => {
   document.addEventListener('keydown', handleKeydown)
-  document.addEventListener('mousedown', handleClickOutside)
 })
 
 onBeforeUnmount(() => {
   document.removeEventListener('keydown', handleKeydown)
-  document.removeEventListener('mousedown', handleClickOutside)
 })
 </script>
 
 <template>
   <Teleport to="body">
     <Transition name="fade">
-      <div v-if="isVisible" class="fixed inset-0 bg-black bg-opacity-50 z-40" aria-hidden="true" />
+      <div v-if="isVisible" @click="handleClickOutside" class="fixed inset-0 bg-black bg-opacity-50 z-40" aria-hidden="true" />
     </Transition>
 
     <Transition :name="props.position === 'start' ? 'slide-left' : 'slide-right'">

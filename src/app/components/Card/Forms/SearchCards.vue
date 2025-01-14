@@ -22,14 +22,17 @@ import TCGInput from '@/app/components/Shared/TCGInputs/TCGInput.vue'
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
 import TCGBadge from '@/app/components/Shared/TCGBadge/TCGBadge.vue'
 
-const emit = defineEmits<{
-  'open-filters': [void]
-}>()
+
 
 // state
 const form = reactive({
   querySearch: '',
 })
+
+// emits
+const emit = defineEmits<{
+  'open-filters': [void]
+}>()
 
 // methods
 function openFilter() {

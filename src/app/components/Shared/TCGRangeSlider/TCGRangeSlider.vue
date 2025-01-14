@@ -29,8 +29,6 @@ interface CssClasses {
 </script>
 
 <template>
-  <h1>Example</h1>
-
   <div
     :data-range-slider="{
       start: 50,

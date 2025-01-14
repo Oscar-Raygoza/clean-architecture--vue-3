@@ -2,7 +2,13 @@
   <TCGDrawerDrawer v-model="showDrawer" title="Filter By" position="end" :width="600">
     <template #body>
       <TCGRangeSlider label="HP" />
-      <TCGAdvancedSelector label="HP" />
+      <TCGAdvancedSelector
+        v-model="sortBy"
+        :options="sortOptions"
+        placeholder="Selet an option to sort by"
+        label="Sort by"
+      />
+      <div class="divider divider-neutral"></div>
     </template>
 
     <template #footer>
@@ -27,18 +33,24 @@
 import { ref, watch } from 'vue'
 import TCGDrawerDrawer from '@/app/components/Shared/TCGDrawer/TCGDrawer.vue'
 import TCGButton from '@/app/components/Shared/TCGButton/TCGButton.vue'
-import TCGRangeSlider from '@/app/components/Shared/TCGRangeSlider/TCGRangeSlider.vue';
-import TCGAdvancedSelector from '@/app/components/Shared/TCGSelector/TCGAdvancedSelector.vue';
+import TCGRangeSlider from '@/app/components/Shared/TCGRangeSlider/TCGRangeSlider.vue'
+import TCGAdvancedSelector from '@/app/components/Shared/TCGSelector/TCGAdvancedSelector.vue'
 
 interface Props {
   show: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  show: false
+  show: false,
 })
 
 const showDrawer = ref(props.show)
+
+const sortBy = ref('')
+const sortOptions = [
+  { value: 'name', label: 'Name' },
+  { value: 'hp', label: 'HP' },
+]
 
 watch(
   () => props.show,
