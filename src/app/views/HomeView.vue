@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, computed, ref } from 'vue'
+import { onMounted, computed, ref, reactive } from 'vue'
 
 // components
 import CardItem from '@/app/components/Card/CardItem.vue'
@@ -22,10 +22,15 @@ onMounted(async () => {
   if (!cardsStore.isHydrated) cardsStore.hydrate()
 
   if (!cardsStore.randomCards.length) await cardsStore.getRandomCards()
+
+  cardsStore.randomCards.forEach((_, position) => {
+    cardPositions[position] = getCardPosition(position)
+  })
 })
 
 // state
 const showFilters = ref<boolean>(false)
+const cardPositions = reactive<Record<number, { top: string; left: string; transform: string }>>([])
 
 // getters
 const cards = computed(() => cardsStore.randomCards) as unknown as Card[]
@@ -44,7 +49,6 @@ function getCardPosition(position: number) {
 }
 
 function toggleFilters() {
-  console.log('toggleFilters')
   showFilters.value = !showFilters.value
 }
 </script>
@@ -58,17 +62,16 @@ function toggleFilters() {
 
     <div class="flex justify-center items-center pt-10 flex-col">
       <SearchCards @open-filters="toggleFilters" />
-      <DrawerFiltersCards :show="showFilters" />
+      <DrawerFiltersCards :show="showFilters" @close="toggleFilters" />
       <p class="text-sm text-neutral-light mt-5">
         {{ t('searchHelper') }}
       </p>
     </div>
-
     <section id="container-random-cards" class="relative w-full max-w-4xl mx-auto my-20">
       <div
         v-for="(card, position) in cards"
         :key="card.id"
-        :style="getCardPosition(position)"
+        :style="cardPositions[position]"
         class="card-wrapper transition-all duration-300 ease-out absolute"
       >
         <CardItem :card="card" />

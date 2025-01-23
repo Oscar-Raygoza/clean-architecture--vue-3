@@ -1,5 +1,5 @@
 <template>
-  <TCGDrawerDrawer v-model="showDrawer" title="Filter By" position="end" :width="600">
+  <TCGDrawerDrawer v-model="showDrawer" title="Filter By" position="end" :width="600" @close="close">
     <template #body>
       <TCGRangeSlider label="HP" />
       <TCGAdvancedSelector
@@ -18,11 +18,11 @@
         color="primary"
         variant="soft"
         size="lg"
-        @click="showDrawer = false"
+        @click="close"
       >
         Save changes
       </TCGButton>
-      <TCGButton class="mb-4" block text color="secondary" @click="showDrawer = false">
+      <TCGButton class="mb-4" block text color="secondary" @click="close">
         Close
       </TCGButton>
     </template>
@@ -44,9 +44,14 @@ const props = withDefaults(defineProps<Props>(), {
   show: false,
 })
 
+const emit = defineEmits<{
+  'close': [void]
+}>()
+
 const showDrawer = ref(props.show)
 
 const sortBy = ref('')
+
 const sortOptions = [
   { value: 'name', label: 'Name' },
   { value: 'hp', label: 'HP' },
@@ -58,4 +63,9 @@ watch(
     showDrawer.value = value
   },
 )
+
+function close() {
+  showDrawer.value = false
+  emit('close')
+}
 </script>
