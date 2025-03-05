@@ -1,13 +1,26 @@
 <template>
-  <div class="card w-full h-screen rounded-lg bg-background-light dark:bg-background-dark mb-28 mx-auto px-5 py-3">
+  <div
+    class="card w-full h-screen rounded-lg bg-background-light dark:bg-background-dark mb-28 mx-auto px-5 py-3"
+  >
     <div class="card-header p-6">
       <div class="flex justify-center items-center pt-10 flex-col">
-        <TCGTitle variant="primary"> TCG Color System </TCGTitle>
+        <TCGTitle
+          variant="primary"
+          class="from-gradient-light-from to-gradient-light-to dark:from-gradient-dark-from dark:to-gradient-dark-to bg-gradient-radial-light dark:bg-gradient-radial-dark gradient-text"
+        >
+          TCG Color System
+        </TCGTitle>
         <TCGTitle variant="secondary"> Design Color System </TCGTitle>
       </div>
     </div>
-    <div class="card-content p-6 mt-10 flex container mx-auto px-5 py-3 fflex flex-wrap justify-start justify-items-center">
-      <div v-for="(section, key) in designThemeConfig" :key="key" class="space-y-4 flex flex-col xl:w-1/3 md:w-1/2 mt-10">
+    <div
+      class="card-content p-6 mt-10 flex container mx-auto px-5 py-3 fflex flex-wrap justify-start justify-items-center"
+    >
+      <div
+        v-for="(section, key) in designThemeConfig"
+        :key="key"
+        class="space-y-4 flex flex-col xl:w-1/3 md:w-1/2 mt-10"
+      >
         <div>
           <h3 class="text-lg font-semibold text-default-dark dark:text-default-light">
             {{ section.title }}
@@ -119,13 +132,13 @@ const designThemeConfig = {
         name: 'dark',
         base: 'bg-default-dark dark:bg-default-dark',
         light: 'bg-default-dark-lighter dark:bg-default-dark-lighter',
-        dark: ''
+        dark: '',
       },
       {
         name: 'light',
         base: 'bg-default-light dark:bg-default-light',
         light: 'bg-default-light-lighter dark:bg-default-light-lighter',
-        dark: ''
+        dark: '',
       },
     ],
     description: 'Color default white or black texts',

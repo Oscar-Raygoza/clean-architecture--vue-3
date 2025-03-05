@@ -11,7 +11,7 @@
         class="h-5 w-5 text-default-dark cursor-pointer dark:text-accent-light"
         aria-hidden="true"
       />
-      <span v-if="text" class="text-default-dark text-md font-bold cursor-pointer dark:text-default-light">{{
+      <span v-if="text" class="text-default-dark text-md font-semibold cursor-pointer dark:text-default-light">{{
         props.text
       }}</span>
       <div class="text-default-dark dark:text-default-light">

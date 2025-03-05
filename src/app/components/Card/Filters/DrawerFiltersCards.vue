@@ -1,5 +1,5 @@
 <template>
-  <TCGDrawerDrawer v-model="showDrawer" title="Filter By" position="end" :width="600" @close="close">
+  <TCGDrawerDrawer v-model="showDrawer" title="Filters" position="end" :width="600" @close="close">
     <template #body>
       <TCGRangeSlider label="HP" />
       <TCGAdvancedSelector

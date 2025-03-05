@@ -8,6 +8,7 @@ import { useIcons } from '@/app//composables/useIcon'
 const props = defineProps<{
   size?: number
   name?: IconType | string
+  src?: string
 }>()
 
 const slots: SetupContext['slots'] = useSlots()
@@ -18,11 +19,11 @@ const iconName = computed<IconType>(() => {
   return props.name ?? ((slots.default?.()[0].children as string)?.trim().toLowerCase() as IconType)
 })
 
-const icon = computed(() => getIcon(iconName.value))
+const icon = computed(() => !props.src ? getIcon(iconName.value) : 'img')
 </script>
 
 <template>
-  <component :is="icon" :width="size ?? 24" :height="size ?? 24"/>
+  <component :is="icon" :src="props.src" :width="size ?? 24" height="auto" />
 </template>
 
 <style scoped>

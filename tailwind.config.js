@@ -22,6 +22,12 @@ export default {
           },
         ],
       },
+      backgroundImage: {
+        'gradient-radial-light':
+          'radial-gradient(circle 300px at 30% -180%, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 100%)',
+        'gradient-radial-dark':
+          'radial-gradient(circle 300px at 30% -180%, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 100%)',
+      },
       colors: {
         brand: {
           primary: {
@@ -133,6 +139,16 @@ export default {
             dark: '#030712', // gray-950
           },
         },
+        gradient: {
+          light: {
+            from: '#60A5FA', // blue-500
+            to: '#2563EB', // blue-300
+          },
+          dark: {
+            from: '#60A5FA', // blue-400
+            to: '#BFDBFE', // blue-200
+          },
+        },
       },
       container: {
         padding: {
@@ -150,7 +166,20 @@ export default {
       },
     },
   },
-  plugins: [flyonui, flyonuiJs],
+  plugins: [
+    flyonui,
+    flyonuiJs,
+    function ({ addUtilities }) {
+      addUtilities({
+        '.gradient-text': {
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+          'text-shadow': '0 0 4px rgba(255, 255, 255, .1), 0 0 14px rgba(130, 168, 236, .2)',
+        },
+      })
+    },
+  ],
   flyonui: {
     themes: [
       {

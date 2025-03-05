@@ -1,5 +1,5 @@
 <template>
-  <form class="w-[50%]">
+  <form class="w-[50%]" @submit="onSubmit">
     <TCGInput v-model="form.querySearch" type="text" autofocus placeholder="Search for a card">
       <template #prepend>
         <TCGIcon name="search" class="h-4 w-4 text-neutral-light" />
@@ -20,9 +20,6 @@ import { reactive, defineEmits } from 'vue'
 
 import TCGInput from '@/app/components/Shared/TCGInputs/TCGInput.vue'
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
-import TCGBadge from '@/app/components/Shared/TCGBadge/TCGBadge.vue'
-
-
 
 // state
 const form = reactive({
@@ -32,10 +29,16 @@ const form = reactive({
 // emits
 const emit = defineEmits<{
   'open-filters': [void]
+  'on-search': [string]
 }>()
 
 // methods
 function openFilter() {
   emit('open-filters')
+}
+
+function onSubmit(event: Event) {
+  event.preventDefault()
+  emit('on-search', form.querySearch)
 }
 </script>
