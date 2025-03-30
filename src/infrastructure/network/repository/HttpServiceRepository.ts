@@ -22,7 +22,7 @@ export default class HttpServiceRepository implements HttpRepository {
 
   constructor() {
     this.http = ky.create({
-      prefixUrl: EnvironmentHelper.BASE_API,
+      prefixUrl: 'https://api.pokemontcg.io/v2',
       timeout: config.TIMEOUT_NETWORK,
     })
   }

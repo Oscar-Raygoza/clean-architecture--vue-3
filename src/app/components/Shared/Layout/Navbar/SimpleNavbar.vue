@@ -13,18 +13,7 @@ export interface NavItems {
 }
 
 const nav: NavItems[] = [
-  {
-    title: 'Sets',
-    to: '/sets',
-  },
-  {
-    title: 'About',
-    to: '/about',
-  },
-  {
-    title: 'Donate',
-    to: '/donations',
-  },
+
 ]
 
 const icons = [

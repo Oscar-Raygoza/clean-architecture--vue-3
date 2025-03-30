@@ -18,11 +18,16 @@ import type UseCase from '@/application/common/useCase/UseCase'
 
 // state
 import type { CardsState } from './types/CardState'
+import type { Pagination } from '@/application/common/pagination/Pagination'
 
 export const useCardStore = defineStore('CardStore', () => {
   // repositories
-  const getRandomCardsUseCase = container.get<UseCase<Omit<FindCardsDto, 'query'>, Card[]>>(
-    cardTypes.getRandomCardsUseCase,
+  const getRandomCardsUseCase = container.get<
+    UseCase<Omit<FindCardsDto, 'query'>, Pagination<Card[]>>
+  >(cardTypes.getRandomCardsUseCase)
+
+  const getCardsUseCase = container.get<UseCase<FindCardsDto, Pagination<Card[]>>>(
+    cardTypes.getCardsUseCase,
   )
 
   const randomCardsStorageRepository = container.get<PersistentStorageRepository<Card[]>>(
@@ -34,6 +39,10 @@ export const useCardStore = defineStore('CardStore', () => {
     _cards: [],
     _isHydrated: false,
     _randomCards: [],
+    _paginationCards: {
+      _totalPages: 0,
+      _currentPage: 1,
+    },
   })
 
   // getters
@@ -43,13 +52,23 @@ export const useCardStore = defineStore('CardStore', () => {
 
   const randomCards = computed(() => state._randomCards)
 
+  const pagination = computed(() => state._paginationCards)
+
   // methods
+  async function getCards(port?: FindCardsDto) {
+    const cards: Pagination<Card[]> = await getCardsUseCase.run(port)
+
+    state._cards = cards.data
+    state._paginationCards._totalPages = cards.totalPages
+    state._paginationCards._currentPage = port?.page ?? 1
+  }
+
   async function getRandomCards(port?: Omit<FindCardsDto, 'query'>) {
-    const cards: Card[] = await getRandomCardsUseCase.run(port)
+    const cards: Pagination<Card[]> = await getRandomCardsUseCase.run(port)
 
-    state._randomCards = cards
+    state._randomCards = cards.data
 
-    randomCardsStorageRepository.set(cards)
+    randomCardsStorageRepository.set(cards.data)
   }
 
   function hydrate() {
@@ -67,5 +86,5 @@ export const useCardStore = defineStore('CardStore', () => {
     }
   }
 
-  return { getRandomCards, hydrate, isHydrated, cards, randomCards }
+  return { getCards, getRandomCards, hydrate, isHydrated, cards, randomCards, pagination }
 })

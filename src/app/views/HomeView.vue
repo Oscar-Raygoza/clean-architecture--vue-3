@@ -10,9 +10,13 @@
       <TCGTitle variant="secondary" component="h2"> {{ t('mainSubtitle') }}</TCGTitle>
     </div>
 
-    <div class="flex justify-center items-center pt-10 flex-col">
-      <SearchCards @open-filters="toggleFilters" @on-search="handlerSearch($event)" />
-      <DrawerFiltersCards :show="showFilters" @close="toggleFilters" />
+    <div class="flex justify-center items-center pt-10 flex-cols">
+      <div class="w-[50%]">
+        <SearchCards @open-filters="toggleFilters" @on-search="handlerSearch($event)" />
+        <DrawerFiltersCards :show="showFilters" @close="toggleFilters" />
+      </div>
+    </div>
+    <div class="flex justify-center items-center flex-cols">
       <p class="text-sm text-neutral-light mt-5">
         {{ t('searchHelper') }}
       </p>
@@ -73,7 +77,7 @@ const cards = computed(() => cardsStore.randomCards) as unknown as Card[]
 
 // methods
 function handlerSearch(query: string) {
-  router.push({ name: 'Search', query: { q: query } })
+  router.push({ name: 'Search', query: { name: query } })
 }
 
 function getCardPosition(position: number) {

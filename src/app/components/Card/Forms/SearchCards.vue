@@ -1,13 +1,13 @@
 <template>
-  <form class="w-[50%]" @submit="onSubmit">
+  <form @submit="onSubmit">
     <TCGInput v-model="form.querySearch" type="text" autofocus placeholder="Search for a card">
       <template #prepend>
-        <TCGIcon name="search" class="h-4 w-4 text-neutral-light" />
+        <TCGIcon name="search" class="h-4 w-4 text-neutral-dark dark:text-default-light" />
       </template>
       <template #append>
         <TCGIcon
           name="filter"
-          class="h-4 w-4 text-neutral-light cursor-pointer hover:text-neutral-dark transition-colors"
+          class="h-4 w-4 text-neutral-light dark:text-default-light cursor-pointer hover:text-neutral-dark transition-colors"
           @click="openFilter"
         />
       </template>
@@ -16,10 +16,22 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, defineEmits } from 'vue'
+import { reactive, defineEmits, onMounted, defi } from 'vue'
 
 import TCGInput from '@/app/components/Shared/TCGInputs/TCGInput.vue'
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
+
+
+interface InputSearchProps {
+  value: string
+}
+
+const props = withDefaults(defineProps<InputSearchProps>(), {
+  value: '',
+})
+onMounted(() => {
+  form.querySearch = props.value
+})
 
 // state
 const form = reactive({

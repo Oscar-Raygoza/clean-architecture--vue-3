@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+interface ButtonProps {
   ariaLabel?: string
   block?: boolean
   color?: 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error'
@@ -40,7 +40,7 @@ interface Props {
   animation?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ButtonProps>(), {
   shape: 'square',
   color: 'primary',
   variant: 'default',

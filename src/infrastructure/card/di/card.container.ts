@@ -20,10 +20,12 @@ import PersistentCardsMapper from '@/application/card/storage/mapper/PersistentC
 
 // use cases
 import type UseCase from '@/application/common/useCase/UseCase'
+import FindCardsUseCase from '@/application/card/useCase/FindCardsUseCase'
 import FindRandomCardsUseCase from '@/application/card/useCase/FindRandomCardsUseCase'
 
 // dtos
 import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
+import type { Pagination } from '@/application/common/pagination/Pagination'
 
 export default new ContainerModule((bind: interfaces.Bind) => {
   // mappers
@@ -37,7 +39,9 @@ export default new ContainerModule((bind: interfaces.Bind) => {
   )
 
   // use cases
-  bind<UseCase<Omit<FindCardsDto, 'query'>, Card[]>>(cardTypes.getRandomCardsUseCase).to(
+  bind<UseCase<FindCardsDto, Pagination<Card[]>>>(cardTypes.getCardsUseCase).to(FindCardsUseCase)
+
+  bind<UseCase<Omit<FindCardsDto, 'query'>, Pagination<Card[]>>>(cardTypes.getRandomCardsUseCase).to(
     FindRandomCardsUseCase,
   )
 })

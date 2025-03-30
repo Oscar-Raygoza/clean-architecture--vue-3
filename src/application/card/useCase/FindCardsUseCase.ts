@@ -7,27 +7,23 @@ import cardTypes from '@/infrastructure/card/di/types'
 import type Card from '@/domain/card/entities/Card'
 
 // types
-import type { Pagination } from '@/application/common/pagination/Pagination'
 import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
 import type UseCase from '@/application/common/useCase/UseCase'
 
 // repository
 import type { CardRepository } from '@/domain/card/repository/CardRepository'
+import type { Pagination } from '@/application/common/pagination/Pagination'
 
 @injectable()
-export default class FindRandomCardsUseCase implements UseCase<FindCardsDto, Pagination<Card[]>> {
+export default class FindCardsUseCase implements UseCase<FindCardsDto, Pagination<Card[]>> {
   constructor(
     @inject(cardTypes.cardsServiceRepository)
     private readonly _cardRepository: CardRepository,
-  ) {}
+  ) { }
 
-  async run(port: Omit<FindCardsDto, 'query'>): Promise<Pagination<Card[]>> {
-    const MAX_VALUE_TO_GET_POKEMON = 151
-
-    const pokemonPosition = Math.floor(Math.random() * MAX_VALUE_TO_GET_POKEMON) + 1
-
+  async run(port: FindCardsDto): Promise<Pagination<Card[]>> {
     const cards = await this._cardRepository.find({
-      query: `nationalPokedexNumbers:[${pokemonPosition} TO ${pokemonPosition + 4}]`,
+      query: port?.query,
       page: port?.page,
       size: port?.size,
     })

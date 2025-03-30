@@ -19,7 +19,7 @@
         :name="props.name"
         :autocomplete="props.autocomplete"
         :class="[
-          'w-full bg-transparent border-neutral-light-lighter appearance-none border-b-2 py-4 px-3 text-neutral-dark leading-tight',
+          'w-full bg-transparent border-neutral-dark dark:border-default-light appearance-none border-b-2 py-3 px-3 text-default-dark dark:text-default-light leading-tight',
           'focus:border-brand-primary-light dark:focus:border-brand-primary-dark focus:outline-none',
           { 'opacity-50 cursor-not-allowed': disabled },
           { 'pl-10': $slots.prepend },
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+interface InputProps {
   modelValue: string
   type?: string
   label?: string
@@ -54,7 +54,7 @@ interface Props {
   hint?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<InputProps>(), {
   type: 'text',
   disabled: false,
   readonly: false,

@@ -1,4 +1,5 @@
 export type IconType =
+  | 'alert'
   | 'arrow-down'
   | 'close'
   | 'dark-mode'
