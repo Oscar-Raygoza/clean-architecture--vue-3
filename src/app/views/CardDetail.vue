@@ -8,7 +8,7 @@
     <div class="container mx-auto px-4 py-4">
       <div class="flex flex-col md:flex-row gap-8">
         <div class="w-full md:w-1/2 flex justify-center">
-          <CardItem :card="newCardMook" class="!w-[400px] !h-[520px]" />
+          <CardItem :card="cardItem" class="!w-[400px] !h-[520px]" />
         </div>
 
         <div class="w-full md:w-1/2 flex flex-col gap-6">
@@ -20,8 +20,13 @@
                 <span class="text-slate-400 font-bold">{{ card.rarity }}</span>
               </div>
               <div>
-                <TCGIcon src="https://pokemontcg.guru/assets/lightning-732a70ef2e2dab4cc564fbf4d85cad48b0ac9ece462be3d42166a6fea4085773.png" class="h-8 w-8 inline mx-4 mb-4" />
-                <TCGTitle variant="primary" class="!text-default-dark dark:!text-default-light"> HP <span class="text-slate-400">•</span> 90 </TCGTitle>
+                <TCGIcon
+                  src="https://pokemontcg.guru/assets/lightning-732a70ef2e2dab4cc564fbf4d85cad48b0ac9ece462be3d42166a6fea4085773.png"
+                  class="h-8 w-8 inline mx-4 mb-4"
+                />
+                <TCGTitle variant="primary" class="!text-default-dark dark:!text-default-light">
+                  HP <span class="text-slate-400">•</span> 90
+                </TCGTitle>
               </div>
             </div>
             <TCGTitle
@@ -115,8 +120,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted, computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+// stores
+import { useCardStore } from '../stores/Card/CardStore'
+
+const cardsStore = useCardStore()
 
 import CardItem from '@/app/components/Card/CardItem.vue'
 import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
@@ -125,9 +135,15 @@ import Card from '@/domain/card/entities/Card'
 import TCGSlideNav from '@/app/components/Shared/TCGSlideNav/TCGSlideNav.vue'
 import TCGIcon from '../components/Shared/TCGIcons/TCGIcon.vue'
 
-const router = useRouter()
+const route = useRoute()
 
-// Mock de datos de la carta (en producción vendría de una API o props)
+onMounted(async () => {
+  await cardsStore.getCardById(route.params.id as string)
+})
+
+const cardItem = computed(() => cardsStore.card) as unknown as Card
+
+
 const card = ref({
   id: 'A2b-002',
   name: 'Pikachu',
@@ -158,23 +174,4 @@ const card = ref({
   description:
     'When several of these Pokémon gather, their electricity can build and cause lightning storms.',
 })
-
-// Función para regresar a la vista anterior
-const goBack = () => {
-  router.back()
-}
-
-onMounted(() => {
-  // Aquí podrías cargar los datos de la carta desde una API
-  // Por ejemplo: loadCardData(route.params.id);
-})
-
-const newCardMook = new Card(
-  'xy11-1',
-  'Tangela',
-  'Pokémon',
-  ['Basic'],
-  '80',
-  'https://images.pokemontcg.io/basep/26_hires.png',
-)
 </script>

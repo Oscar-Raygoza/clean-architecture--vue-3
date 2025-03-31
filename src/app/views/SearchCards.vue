@@ -34,7 +34,7 @@
 
     <section v-if="!isLoading && cards.length" class="grid grid-cols-5 gap-4 mt-15">
       <div v-for="card in cards" :key="card.id">
-        <CardItem :card="card" />
+        <CardItem :card="card" @show-card="goToCardDetailView($event)" />
       </div>
     </section>
 
@@ -118,5 +118,9 @@ async function searchCards(page: number = 1) {
 
 function toggleFilters() {
   showFilters.value = !showFilters.value
+}
+
+function goToCardDetailView(id: string) {
+  router.push({ name: 'CardDetail', params: { id } })
 }
 </script>

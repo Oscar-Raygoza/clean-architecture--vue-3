@@ -6,6 +6,10 @@ const props = defineProps<{
   card: InstanceType<typeof Card>
 }>()
 
+const emit = defineEmits<{
+  'show-card': [value: string]
+}>()
+
 const cardElement = ref<HTMLElement>()
 const glowRef = ref<HTMLElement>()
 
@@ -94,6 +98,7 @@ onUnmounted(() => {
     <img
       :alt="`${props.card?.name} pokemon`"
       :src="props.card?.image"
+      @click="emit('show-card', props.card.id)"
       class="card-image"
     />
     <div ref="glowRef" class="card-glow" />

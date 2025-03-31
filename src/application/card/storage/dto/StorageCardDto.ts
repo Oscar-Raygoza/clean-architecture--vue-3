@@ -1,8 +1,9 @@
+import type CardDetails from '@/domain/card/entities/CardDetails'
+
 export interface StorageCardsDto {
-  _id: string
-  _name: string
-  _supertype: string
-  _subtypes: string[]
-  _hp?: string
-  _image?: string
+  readonly _id: string
+  readonly _details: CardDetails
+  readonly _image: string
+  readonly _name: string
+  readonly _supertype: string
 }

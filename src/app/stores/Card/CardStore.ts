@@ -30,6 +30,8 @@ export const useCardStore = defineStore('CardStore', () => {
     cardTypes.getCardsUseCase,
   )
 
+  const getCardByIdUseCase = container.get<UseCase<string, Card>>(cardTypes.findCardByIdUseCase)
+
   const randomCardsStorageRepository = container.get<PersistentStorageRepository<Card[]>>(
     cardTypes.randomCardsStorageRepository,
   )
@@ -37,6 +39,7 @@ export const useCardStore = defineStore('CardStore', () => {
   // data
   const state = reactive<CardsState>({
     _cards: [],
+    _card: {} as Card,
     _isHydrated: false,
     _randomCards: [],
     _paginationCards: {
@@ -47,6 +50,8 @@ export const useCardStore = defineStore('CardStore', () => {
 
   // getters
   const cards = computed(() => state._cards)
+
+  const card = computed(() => state._card)
 
   const isHydrated = computed(() => state._isHydrated)
 
@@ -71,6 +76,12 @@ export const useCardStore = defineStore('CardStore', () => {
     randomCardsStorageRepository.set(cards.data)
   }
 
+  async function getCardById(id: string) {
+    const card = await getCardByIdUseCase.run(id)
+
+    state._card = card
+  }
+
   function hydrate() {
     _hydrateRandomCards()
 
@@ -86,5 +97,15 @@ export const useCardStore = defineStore('CardStore', () => {
     }
   }
 
-  return { getCards, getRandomCards, hydrate, isHydrated, cards, randomCards, pagination }
+  return {
+    getCardById,
+    getCards,
+    getRandomCards,
+    hydrate,
+    card,
+    cards,
+    isHydrated,
+    pagination,
+    randomCards,
+  }
 })

@@ -28,7 +28,7 @@
         :style="cardPositions[position]"
         class="card-wrapper transition-all duration-300 ease-out absolute"
       >
-        <CardItem :card="card" />
+        <CardItem :card="card" @show-card="goToCardDetailView($event)" />
       </div>
     </section>
   </section>
@@ -94,6 +94,10 @@ function getCardPosition(position: number) {
 
 function toggleFilters() {
   showFilters.value = !showFilters.value
+}
+
+function goToCardDetailView(id: string) {
+  router.push({ name: 'CardDetail', params: { id } })
 }
 </script>
 

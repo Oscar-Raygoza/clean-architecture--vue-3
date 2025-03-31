@@ -2,7 +2,7 @@ import type CardDetails from './CardDetails'
 
 export default class Card {
   constructor(
-    protected readonly _id: string,
+    private readonly _id: string,
     private readonly _details: CardDetails,
     private readonly _image: string,
     private readonly _name: string,
