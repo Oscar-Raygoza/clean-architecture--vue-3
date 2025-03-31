@@ -7,6 +7,7 @@ export const useIcons = () => {
   const icons = new Map<IconType, Component>([
     ['alert', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/shared/alert.icon.vue'))],
     ['arrow-down', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/shared/arrow-down.icon.vue'))],
+    ['arrow-left', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/shared/arrow-left.icon.vue'))],
     ['close', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/shared/close.icon.vue'))],
     ['dark-mode', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/shared/dark-mode.icon.vue'))],
     ['facebook', defineAsyncComponent(() => import('@/app/components/Shared/TCGIcons/icons/social-networks/facebook.icon.vue'))],

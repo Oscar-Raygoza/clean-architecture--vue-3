@@ -7,4 +7,5 @@ import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
 
 export interface CardRepository {
   find(port: FindCardsDto): Promise<Pagination<Card[]>>
+  findById(id: string): Promise<Card>
 }

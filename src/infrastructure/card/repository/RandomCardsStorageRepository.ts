@@ -4,13 +4,19 @@ import { inject, injectable } from 'inversify'
 import cardsTypes from '@/infrastructure/card/di/types'
 import persistenceTypes from '@/infrastructure/persistence/di/types'
 
+// entities
 import type Card from '@/domain/card/entities/Card'
 
+// repository
 import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistentStorageRepository'
 import type { PersistenceRepository } from '@/infrastructure/persistence/repository/PersistenceRepository'
 
+// mapper
 import type MapperType from '@/application/common/mapper/type/MapperType'
+
+// dtos
 import type { StorageCardsDto } from '@/application/card/storage/dto/StorageCardDto'
+
 import { CardsStorageKeys } from '@/application/card/storage/enum/CardsStorageKeys'
 
 @injectable()

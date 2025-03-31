@@ -12,7 +12,7 @@
 
     <div class="flex justify-center items-center pt-10 flex-cols">
       <div class="w-[50%]">
-        <SearchCards @open-filters="toggleFilters" @on-search="handlerSearch($event)" />
+        <Search value="" @open-filters="toggleFilters" @on-search="handlerSearch($event)" />
         <DrawerFiltersCards :show="showFilters" @close="toggleFilters" />
       </div>
     </div>
@@ -44,7 +44,7 @@ const router = useRouter()
 // components
 import CardItem from '@/app/components/Card/CardItem.vue'
 import DrawerFiltersCards from '@/app/components/Card/Filters/DrawerFiltersCards.vue'
-import SearchCards from '@/app/components/Card/Forms/SearchCards.vue'
+import Search from '@/app/components/Card/Forms/Search.vue'
 import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
 
 // i18n
@@ -77,7 +77,7 @@ const cards = computed(() => cardsStore.randomCards) as unknown as Card[]
 
 // methods
 function handlerSearch(query: string) {
-  router.push({ name: 'Search', query: { name: query } })
+  router.push({ name: 'SearchCards', query: { name: query } })
 }
 
 function getCardPosition(position: number) {

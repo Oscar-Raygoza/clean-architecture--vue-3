@@ -1,6 +1,7 @@
 export type IconType =
   | 'alert'
   | 'arrow-down'
+  | 'arrow-left'
   | 'close'
   | 'dark-mode'
   | 'facebook'

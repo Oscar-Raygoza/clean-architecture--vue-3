@@ -11,6 +11,7 @@ import Card from '@/domain/card/entities/Card'
 import type { PersistentStorageRepository } from '@/infrastructure/persistence/enum/PersistentStorageRepository'
 
 // dto's
+import type { Pagination } from '@/application/common/pagination/Pagination'
 import type FindCardsDto from '@/domain/card/dto/FindCardsDto'
 
 // useCase
@@ -18,7 +19,6 @@ import type UseCase from '@/application/common/useCase/UseCase'
 
 // state
 import type { CardsState } from './types/CardState'
-import type { Pagination } from '@/application/common/pagination/Pagination'
 
 export const useCardStore = defineStore('CardStore', () => {
   // repositories

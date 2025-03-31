@@ -1,9 +1,5 @@
-export interface FindCardsResponseDto {
-  readonly data: CardResponseDto[]
-  readonly page: number
-  readonly pageSize: number
-  readonly count: number
-  readonly totalCount: number
+export interface FindSimpleCardResponseDto {
+  readonly data: CardResponseDto
 }
 
 export interface CardResponseDto {
@@ -56,7 +52,7 @@ export interface Attack {
 export interface Cardmarket {
   readonly url: string
   readonly updatedAt: Date
-  readonly prices: CardmarketPrices
+  readonly prices: { [key: string]: number }
 }
 
 export interface ImageCard {
@@ -130,22 +126,4 @@ export interface Edition {
   readonly high: number
   readonly market: number
   readonly directLow: number | null
-}
-
-export interface CardmarketPrices {
-  averageSellPrice: number
-  lowPrice: number
-  trendPrice: number
-  germanProLow: number
-  suggestedPrice: number
-  reverseHoloSell: number
-  reverseHoloLow: number
-  reverseHoloTrend: number
-  lowPriceExPlus: number
-  avg1: number
-  avg7: number
-  avg30: number
-  reverseHoloAvg1: number
-  reverseHoloAvg7: number
-  reverseHoloAvg30: number
 }

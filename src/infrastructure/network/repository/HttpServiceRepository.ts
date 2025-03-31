@@ -14,15 +14,12 @@ import type Response from '@/infrastructure/network/dto/Response'
 import { NetworkErrorHandlerCode } from '@/application/network/error/enum/NetworkErrorHandlerCode'
 import NetworkErrorHandler from '@/application/network/error/NetworkErrorHandler'
 
-import EnvironmentHelper from '@/infrastructure/config/env/EnviromentHelper'
-
 @injectable()
 export default class HttpServiceRepository implements HttpRepository {
   private readonly http: KyInstance
 
   constructor() {
     this.http = ky.create({
-      prefixUrl: 'https://api.pokemontcg.io/v2',
       timeout: config.TIMEOUT_NETWORK,
     })
   }

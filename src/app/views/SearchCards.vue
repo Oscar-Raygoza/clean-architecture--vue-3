@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center items-center pt-10 flex-col">
     <div class="w-[50%]">
-      <SearchCards
+      <Search
         :value="route.query.name as string"
         @open-filters="toggleFilters"
         @on-search="handlerSearch($event)"
@@ -38,7 +38,7 @@
       </div>
     </section>
 
-    <section class="mt-10 mb-10">
+    <section class="mt-10 mb-10" v-if="!isLoading && cards.length">
       <TCGPagination
         :current-page="pagination._currentPage"
         :total-pages="pagination._totalPages"
@@ -59,10 +59,10 @@ import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
 import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
 
 // router
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 // components
-import SearchCards from '@/app/components/Card/Forms/SearchCards.vue'
+import Search from '@/app/components/Card/Forms/Search.vue'
 import DrawerFiltersCards from '@/app/components/Card/Filters/DrawerFiltersCards.vue'
 
 // stores
@@ -71,6 +71,7 @@ import type Card from '@/domain/card/entities/Card'
 import TCGPagination from '../components/Shared/TCGPagination/TCGPagination.vue'
 
 const route = useRoute()
+const router = useRouter()
 
 const cardsStore = useCardStore()
 
@@ -93,6 +94,13 @@ const pagination = computed(() => cardsStore.pagination)
 async function handlerSearch(query: string) {
   currentSearch.value = query
   await searchCards()
+
+  router.replace({
+    query: {
+      ...route.query,
+      name: query,
+    },
+  });
 }
 async function searchCards(page: number = 1) {
   isLoading.value = true

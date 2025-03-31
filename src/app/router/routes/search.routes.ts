@@ -1,15 +1,15 @@
 import type { RouteRecordRaw } from 'vue-router'
-import SearchView from "@/app/views/SearchView.vue"
+import SearchCards from "@/app/views/SearchCards.vue"
 const routes: RouteRecordRaw[] = [
   {
     path: '',
-    name: 'Search',
-    component: () => SearchView,
+    name: 'SearchCards',
+    component: () => SearchCards,
   },
   {
     path: ':id',
     name: 'CardDetail',
-    component: () => import('@/app/views/TCGSystemColors.vue'),
+    component: () => import('@/app/views/CardDetail.vue'),
   }
 ]
 
