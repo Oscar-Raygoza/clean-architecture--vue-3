@@ -13,24 +13,7 @@
       <CardSkeleton v-for="(_, position) in 10" :key="position" />
     </section>
 
-    <!-- TODO: Refactor to new component Cards Not Found -->
-    <section
-      v-if="!isLoading && !cards.length"
-      class="flex justify-center items-center flex-col mt-15"
-    >
-      <img src="/src/app/assets/static/gifs/pokemon.gif" alt="No cards found" class="w-1/2 block" />
-
-      <TCGTitle
-        variant="secondary"
-        class="!text-default-dark dark:!text-default-light !text-xl !font-semibold mt-5"
-      >
-        <TCGIcon
-          name="alert"
-          class="h-4 w-4 text-neutral-dark dark:text-default-light inline mx-2 mb-1"
-        />
-        Cards not found, try another search
-      </TCGTitle>
-    </section>
+    <CardsNotFound v-if="!isLoading && !cards.length" />
 
     <section v-if="!isLoading && cards.length" class="grid grid-cols-5 gap-4 mt-15">
       <div v-for="card in cards" :key="card.id">
@@ -55,20 +38,19 @@ import { ref, onMounted, computed } from 'vue'
 // components
 import CardItem from '@/app/components/Card/CardItem.vue'
 import CardSkeleton from '@/app/components/Card/Skeleton/CardSkeleton.vue'
-import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
-import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
+import CardsNotFound from '@/app/components/Card/NotFound/CardsNotFound.vue'
+import DrawerFiltersCards from '@/app/components/Card/Filters/DrawerFiltersCards.vue'
+import TCGPagination from '@/app//components/Shared/TCGPagination/TCGPagination.vue'
 
 // router
 import { useRoute, useRouter } from 'vue-router'
 
 // components
 import Search from '@/app/components/Card/Forms/Search.vue'
-import DrawerFiltersCards from '@/app/components/Card/Filters/DrawerFiltersCards.vue'
 
 // stores
 import { useCardStore } from '../stores/Card/CardStore'
 import type Card from '@/domain/card/entities/Card'
-import TCGPagination from '../components/Shared/TCGPagination/TCGPagination.vue'
 
 const route = useRoute()
 const router = useRouter()
