@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
 import TCGLangToggle from '@/app/components/Shared/TCGLangButtons/TCGLangToggle.vue'
@@ -50,8 +50,21 @@ const icons = [
   Venusaur,
 ]
 
-const icon = computed(() => icons[Math.floor(Math.random() * icons.length)])
+const selectedIcon = ref<string>()
 
+onMounted(() => {
+  const savedIcon = sessionStorage.getItem('selectedIcon')
+
+  if (savedIcon) {
+    selectedIcon.value = savedIcon
+  } else {
+    const randomIcon = icons[Math.floor(Math.random() * icons.length)]
+    selectedIcon.value = randomIcon
+    sessionStorage.setItem('selectedIcon', randomIcon)
+  }
+})
+
+const icon = computed(() => selectedIcon.value)
 </script>
 <template>
   <div class="bg-background-ligth dark:bg-background-dark">
