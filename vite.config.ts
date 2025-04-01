@@ -29,5 +29,10 @@ export default defineConfig(({ mode }) => {
         POKEMONTCG_API_KEY: env.VITE_POKEMONTCG_API_KEY,
       },
     },
+    build: {
+      rollupOptions: {
+        input: '/src/app/main.ts',
+      },
+    },
   }
 })

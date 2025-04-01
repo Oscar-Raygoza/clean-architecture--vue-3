@@ -1,10 +1,11 @@
 import type { RouteRecordRaw } from 'vue-router'
-import SearchCards from "@/app/views/SearchCards.vue"
+
+
 const routes: RouteRecordRaw[] = [
   {
     path: '',
     name: 'SearchCards',
-    component: () => SearchCards,
+    component: () => import('@/app/views/SearchCards.vue'),
   },
   {
     path: ':id',
