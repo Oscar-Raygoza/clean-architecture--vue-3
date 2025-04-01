@@ -190,10 +190,6 @@ function determineCardType(card: Card) {
     }
   }
 
-  if (card.details.weaknesses?.length && card.details.weaknesses[0].type === 'Fighting') {
-    return 'Lightning'
-  }
-
   return 'Normal'
 }
 
