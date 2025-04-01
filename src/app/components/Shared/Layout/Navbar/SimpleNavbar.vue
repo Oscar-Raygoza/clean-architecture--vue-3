@@ -7,37 +7,51 @@ import TCGMenuProjects from '@/app/components/Shared/Layout/Navbar/Menu/Projects
 import TCGThemeToggle from '@/app/components/Shared/TCGThemeButtons/TCGThemeToggle.vue'
 import TCGTitle from '@/app/components/Shared/TCGTitle/TCGTitle.vue'
 
+import Blue from '@/app/assets/static/icons/blue.png'
+import Charizard from '@/app/assets/static/icons/charizard(geneticapex).png'
+import Eevee from '@/app/assets/static/icons/eevee.png'
+import Electrode from '@/app/assets/static/icons/electrode.png'
+import Erika from '@/app/assets/static/icons/erika.png'
+import Gardevoir from '@/app/assets/static/icons/gardevoir.png'
+import Giovanni from '@/app/assets/static/icons/giovanni.png'
+import Meowth from '@/app/assets/static/icons/meowth.png'
+import Mew from '@/app/assets/static/icons/mew.png'
+import Mewtwo from '@/app/assets/static/icons/mewtwo.png'
+import MewtwoGeneticApex from '@/app/assets/static/icons/mewtwo(geneticapex).png'
+import Pikachu from '@/app/assets/static/icons/pikachu.png'
+import PikachuGeneticApex from '@/app/assets/static/icons/pikachu(geneticapex).png'
+import Slowpoke from '@/app/assets/static/icons/slowpoke.png'
+import Snorlax from '@/app/assets/static/icons/snorlax.png'
+import Venusaur from '@/app/assets/static/icons/venusaur.png'
+
 export interface NavItems {
   title: string
   to: string
 }
 
-const nav: NavItems[] = [
-
-]
+const nav: NavItems[] = []
 
 const icons = [
-  'blue.png',
-  'charizard(geneticapex).png',
-  'eevee.png',
-  'electrode.png',
-  'erika.png',
-  'gardevoir.png',
-  'giovanni.png',
-  'meowth.png',
-  'mew.png',
-  'mewtwo.png',
-  'mewtwo(geneticapex).png',
-  'pikachu.png',
-  'pikachu(geneticapex).png',
-  'slowpoke.png',
-  'snorlax.png',
-  'venusaur.png',
+  Blue,
+  Charizard,
+  Eevee,
+  Electrode,
+  Erika,
+  Gardevoir,
+  Giovanni,
+  Meowth,
+  Mew,
+  Mewtwo,
+  MewtwoGeneticApex,
+  Pikachu,
+  PikachuGeneticApex,
+  Slowpoke,
+  Snorlax,
+  Venusaur,
 ]
 
-const icon = computed(
-  () => `/src/app/assets/static/icons/${icons[Math.floor(Math.random() * icons.length)]}`,
-)
+const icon = computed(() => icons[Math.floor(Math.random() * icons.length)])
+
 </script>
 <template>
   <div class="bg-background-ligth dark:bg-background-dark">
