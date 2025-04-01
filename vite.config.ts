@@ -30,9 +30,8 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      rollupOptions: {
-        input: '/src/main.ts',
-      },
+      outDir: 'dist',
+      sourcemap: true, // Útil para depuración
     },
   }
 })
