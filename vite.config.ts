@@ -31,7 +31,7 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       rollupOptions: {
-        input: '/src/app/main.ts',
+        input: '/src/main.ts',
       },
     },
   }
