@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, defineEmits, onMounted, defi } from 'vue'
+import { reactive, defineEmits, onMounted } from 'vue'
 
 import TCGInput from '@/app/components/Shared/TCGInputs/TCGInput.vue'
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'

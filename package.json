@@ -1,8 +1,12 @@
 {
-  "name": "pockemon-tgc-pocket-stats",
-  "version": "0.0.0",
+  "name": "clean-architecture-vue-3",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "author": {
+    "email": "oscar.eduardo.raygoza@gmail.com",
+    "name": "Oscar Eduardo Raygoza"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",

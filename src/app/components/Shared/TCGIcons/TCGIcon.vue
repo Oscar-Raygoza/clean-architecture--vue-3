@@ -16,10 +16,13 @@ const slots: SetupContext['slots'] = useSlots()
 const { getIcon } = useIcons()
 
 const iconName = computed<IconType>(() => {
-  return props.name ?? ((slots.default?.()[0].children as string)?.trim().toLowerCase() as IconType)
+  return (
+    (props.name as IconType) ??
+    ((slots.default?.()[0].children as string)?.trim().toLowerCase() as IconType)
+  )
 })
 
-const icon = computed(() => !props.src ? getIcon(iconName.value) : 'img')
+const icon = computed(() => (!props.src ? getIcon(iconName.value) : 'img'))
 </script>
 
 <template>

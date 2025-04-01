@@ -35,7 +35,7 @@ watch(internalValue, (newValue) => {
           v-for="option in options"
           :key="option.value"
           :value="option.value"
-          :hidden="options?.hidden"
+          :hidden="option.hidden"
         >
           {{ option.label }}
         </option>
