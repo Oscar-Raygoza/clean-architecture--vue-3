@@ -35,11 +35,9 @@ const icons = [
   'venusaur.png',
 ]
 
-const icon = computed(() => {
-  const imageName = icons[Math.floor(Math.random() * icons.length)]
-
-  return new URL(`@/app/assets/static/icons/${imageName}`, import.meta.url).href
-})
+const icon = computed(
+  () => `/src/app/assets/static/icons/${icons[Math.floor(Math.random() * icons.length)]}`,
+)
 </script>
 <template>
   <div class="bg-background-ligth dark:bg-background-dark">
