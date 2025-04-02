@@ -158,9 +158,11 @@ const icon = computed(() => selectedIcon.value)
               {{ link.title }}
             </router-link>
           </template>
-          <div class="flex space-x-4 px-4 py-2">
+          <div class="flex space-x-4  py-2">
             <TCGLangToggle />
-            <TCGThemeToggle />
+          </div>
+          <div class="flex space-x-1 py-2">
+            <TCGThemeToggle /> <span class="py-2 font-semibold ">Mode</span>
           </div>
         </div>
       </div>

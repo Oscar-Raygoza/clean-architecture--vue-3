@@ -11,17 +11,15 @@
     </div>
 
     <!-- Esqueletos de carga -->
-    <section v-if="isLoading" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8 sm:mt-15 w-full">
+    <section v-if="isLoading" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 mt-8 sm:mt-15">
       <CardSkeleton v-for="(_, position) in 10" :key="position" />
     </section>
 
-    <!-- Mensaje de no encontrado -->
     <CardsNotFound v-if="!isLoading && !cards.length" />
 
-    <!-- Grid de tarjetas -->
     <section
       v-if="!isLoading && cards.length"
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8 sm:mt-15 w-full"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 mt-8 sm:mt-15"
     >
       <div v-for="card in cards" :key="card.id" class="flex justify-center sm:justify-start">
         <CardItem :card="card" @show-card="goToCardDetailView($event)" />

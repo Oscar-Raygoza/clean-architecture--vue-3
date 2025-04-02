@@ -7,8 +7,7 @@
       <template #append>
         <TCGIcon
           name="filter"
-          class="h-4 w-4 text-neutral-light dark:text-default-light cursor-pointer hover:text-neutral-dark transition-colors"
-          @click="openFilter"
+          class="h-4 w-4 text-neutral-light dark:text-default-light hover:text-neutral-dark transition-colors !cursor-not-allowed opacity-50"
         />
       </template>
     </TCGInput>
