@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed, ref, reactive } from 'vue'
+import { onMounted, computed, ref, reactive, type Ref } from 'vue'
 
 // router
 import { useRouter } from 'vue-router'
@@ -104,7 +104,7 @@ const showFilters = ref<boolean>(false)
 const cardPositions = reactive<Record<number, { top: string; left: string; transform: string }>>([])
 
 // getters
-const cards = computed(() => cardsStore.randomCards) as unknown as Card[]
+const cards = computed(() => cardsStore.randomCards) as unknown as Ref<Card[]>
 
 // methods
 function handlerSearch(query: string) {
