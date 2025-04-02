@@ -6,7 +6,7 @@
       <section class="container mx-auto px-4 py-4">
         <div class="flex flex-col md:flex-row gap-8">
           <div class="w-full md:w-1/2 flex justify-center">
-            <CardSkeleton class="!w-[400px] !h-[520px]" />
+            <CardSkeleton class="!w-[90%] sm:!w-[400px] !h-[520px]" />
           </div>
 
           <div class="w-full md:w-1/2 flex flex-col gap-6">
@@ -16,104 +16,66 @@
       </section>
     </div>
 
-    <section v-if="!isLoading && !card?.name" class="flex justify-center items-center flex-col">
-      <CardsNotFound  class="w-[30%]"/>
+    <section v-if="!isLoading && !card?.name" class="flex justify-center items-center flex-col px-4">
+      <CardsNotFound class="w-full sm:w-[70%] md:w-[50%] lg:w-[30%]" />
     </section>
 
     <section v-if="!isLoading && card?.name" class="container mx-auto px-4 py-4">
-      <div class="flex flex-col md:flex-row gap-8">
-        <div class="w-full md:w-1/2 flex justify-center">
-          <CardItem :card="card" class="!w-[400px] !h-[520px]" />
+      <div class="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
+        <div class="w-full lg:w-1/2 flex justify-center">
+          <CardItem :card="card" class="!w-[90%] sm:!w-[400px] !h-[520px]" />
         </div>
 
-        <!-- Card Details Section -->
-        <div class="w-full md:w-1/2 flex flex-col gap-6">
-          <HeaderCard
-            :name="card.name"
-            :rarity="card.details.rarity"
-            :type="cardType"
-            :hp="card.details.hp"
-          />
+        <div class="w-full lg:w-1/2 flex flex-col gap-6">
+          <HeaderCard :name="card.name" :rarity="card.details.rarity" :type="cardType" :hp="card.details.hp" />
 
-          <!-- stats Panel -->
           <InfoPanel title="Stats">
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <StatItem label="Type" :value="cardType" />
               <StatItem label="Weakness" :value="formatWeakness(card.details.weaknesses)" />
               <div>
-                <p class="dark:text-neutral-dark-lighter text-neutral-dark-dark text-sm">
-                  Retreat Cost
-                </p>
+                <p class="text-sm text-neutral-dark-dark dark:text-neutral-dark-lighter">Retreat Cost</p>
                 <div class="flex items-center gap-1 mt-1">
-                  <img
-                    v-for="index in card.details.retreatCost"
-                    :key="index"
-                    :src="useEnergyIcon('Colorless')"
-                    alt="Energy"
-                    class="w-5 h-5"
-                  />
+                  <img v-for="index in card.details.retreatCost" :key="index" :src="useEnergyIcon('Colorless')" alt="Energy" class="w-5 h-5" />
                 </div>
               </div>
               <StatItem label="Expansion" :value="card.details.set" />
             </div>
           </InfoPanel>
 
-          <!-- Attacks Panel -->
           <InfoPanel v-if="hasAttacks" title="Attacks">
             <div class="space-y-4">
-              <div
-                v-for="(attack, index) in card.details.attacks"
-                :key="index"
-                class="border-b border-slate-700 pb-4 last:border-0 last:pb-0"
-              >
-                <div class="flex items-center gap-2">
+              <div v-for="(attack, index) in card.details.attacks" :key="index" class="border-b border-slate-700 pb-4 last:border-0 last:pb-0">
+                <div class="flex flex-wrap items-center gap-2">
                   <div class="flex items-center">
-                    <img
-                      v-for="(energy, energyIndex) in attack.cost"
-                      :key="energyIndex"
-                      :src="useEnergyIcon(energy)"
-                      alt="Energy"
-                      class="w-5 h-5 mr-1"
-                    />
+                    <img v-for="(energy, energyIndex) in attack.cost" :key="energyIndex" :src="useEnergyIcon(energy)" alt="Energy" class="w-5 h-5 mr-1" />
                   </div>
                   <h4 class="font-medium">{{ attack.name }}</h4>
                   <span class="ml-auto font-bold">{{ attack.damage }}</span>
                 </div>
-                <p class="mt-2 dark:text-neutral-dark-lighter text-neutral-dark-dark">
+                <p class="mt-2 text-sm text-neutral-dark-dark dark:text-neutral-dark-lighter">
                   {{ attack.text }}
                 </p>
               </div>
             </div>
           </InfoPanel>
 
-          <!-- Prices Panel -->
           <InfoPanel v-if="hasPrices" title="Market Prices in USD">
             <div class="space-y-3">
-              <div
-                v-for="(price, index) in card.details.prices"
-                :key="index"
-                class="flex justify-between"
-              >
+              <div v-for="(price, index) in card.details.prices" :key="index" class="flex flex-wrap justify-between gap-2">
                 <a :href="price.purchaseLink" class="text-brand-primary-light font-bold underline">
-                  <span>{{ price.store }}</span></a
-                >
+                  <span>{{ price.store }}</span>
+                </a>
                 <div>
-                  <span class="dark:text-accent-light text-error-dark font-bold">{{
-                    formatPrice(price.price)
-                  }}</span>
-                  <span
-                    v-if="price.lowPrice"
-                    class="text-sm dark:text-neutral-dark-lighter text-neutral-dark-dark ml-2"
-                  >
-                    (Low: {{ formatPrice(price.lowPrice) }} - High:
-                    {{ formatPrice(price.highPrice) }})
+                  <span class="dark:text-accent-light text-error-dark font-bold">{{ formatPrice(price.price) }}</span>
+                  <span v-if="price.lowPrice" class="text-sm text-neutral-dark-dark dark:text-neutral-dark-lighter ml-2">
+                    (Low: {{ formatPrice(price.lowPrice) }} - High: {{ formatPrice(price.highPrice) }})
                   </span>
                 </div>
               </div>
             </div>
           </InfoPanel>
 
-          <!-- Illustrator Panel -->
           <InfoPanel title="Illustrator">
             <p>{{ card.details.artist }}</p>
           </InfoPanel>

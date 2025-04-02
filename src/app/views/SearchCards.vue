@@ -1,6 +1,7 @@
 <template>
-  <div class="flex justify-center items-center pt-10 flex-col">
-    <div class="w-[50%]">
+  <div class="flex justify-center items-center pt-4 sm:pt-10 flex-col px-4 sm:px-6 md:px-8">
+    <!-- Barra de búsqueda -->
+    <div class="w-full sm:w-[70%] md:w-[60%] lg:w-[50%]">
       <Search
         :value="route.query.name as string"
         @open-filters="toggleFilters"
@@ -9,23 +10,30 @@
       <DrawerFiltersCards :show="showFilters" @close="toggleFilters" />
     </div>
 
-    <section v-if="isLoading" class="grid grid-cols-5 gap-4 mt-15">
+    <!-- Esqueletos de carga -->
+    <section v-if="isLoading" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8 sm:mt-15 w-full">
       <CardSkeleton v-for="(_, position) in 10" :key="position" />
     </section>
 
+    <!-- Mensaje de no encontrado -->
     <CardsNotFound v-if="!isLoading && !cards.length" />
 
-    <section v-if="!isLoading && cards.length" class="grid grid-cols-5 gap-4 mt-15">
-      <div v-for="card in cards" :key="card.id">
+    <!-- Grid de tarjetas -->
+    <section
+      v-if="!isLoading && cards.length"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8 sm:mt-15 w-full"
+    >
+      <div v-for="card in cards" :key="card.id" class="flex justify-center sm:justify-start">
         <CardItem :card="card" @show-card="goToCardDetailView($event)" />
       </div>
     </section>
 
-    <section class="mt-10 mb-10" v-if="!isLoading && cards.length">
+    <!-- Paginación -->
+    <section class="mt-6 sm:mt-10 mb-10" v-if="!isLoading && cards.length">
       <TCGPagination
         :current-page="pagination._currentPage"
         :total-pages="pagination._totalPages"
-        :max-visible-pages="12"
+        :max-visible-pages="isMobile ? 5 : 12"
         @update:current-page="searchCards($event)"
       />
     </section>
@@ -61,12 +69,28 @@ const cardsStore = useCardStore()
 const showFilters = ref<boolean>(false)
 const isLoading = ref<boolean>(false)
 const currentSearch = ref<string>('')
+const windowWidth = ref(window.innerWidth)
+
+// Detectar si estamos en un dispositivo móvil
+const isMobile = computed(() => windowWidth.value < 640)
 
 onMounted(async () => {
   currentSearch.value = route.query.name as string
 
   await searchCards()
+
+  // Añadir listener para cambios de tamaño de ventana
+  window.addEventListener('resize', handleResize)
 })
+
+// Limpiar el event listener cuando el componente se desmonta
+function onUnmounted() {
+  window.removeEventListener('resize', handleResize)
+}
+
+function handleResize() {
+  windowWidth.value = window.innerWidth
+}
 
 // getters
 const cards = computed(() => cardsStore.cards) as unknown as Card[]
@@ -84,6 +108,7 @@ async function handlerSearch(query: string) {
     },
   });
 }
+
 async function searchCards(page: number = 1) {
   isLoading.value = true
 
