@@ -1,55 +1,164 @@
-# pockemon-tgc-pocket-stats
+<div align="center">
+  <a href="#">
+    <img src="https://media-hosting.imagekit.io/7ac38f7f87854142/bmc_qr.png?Expires=1838328216&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=x1gn5KZPJoLXaH1G8yBwQGI5xNV1kaPbLtAxtrVs9Fj2YvYWRGklLs4vPKDujXyBQeV~uaR7zCdgmGuo9sQQ7XuKBvYW7RvACGE9vE3TQi905-rfjV8V0meDjqZ-RmL7dnUYkVsUFyM0Vdu4vtKkC-9VnvzmXZEiQDsF4f0U34d4aj5PjSOYBRofFaISb2EIiTZckKdkvcby9EPAFhaQgqyQzTAKnMxzo9YHVSLMKGvD~gjAsN8PogTEVDDgOdkaRfECY3sPURBC7m8CNxS5ON0tXm69LfXcEBPGQDl8CwmmFf26X7E4v2YeQwR~oRKys95a3V3W-aM4S2Z7u0G7RA__" alt="Logo" width="10%" height="auto">
+  </a>
 
-This template should help get you started developing with Vue 3 in Vite.
+  <h3 align="center">CLEAN ARCHITECTURE FRONTEND</h3>
 
-## Recommended IDE Setup
+  <p align="center">
+    <br />
+    Una exemplo practico donde utilizamos una arquitectura limpia 
+    <br />
+    <br />
+    <a href="https://github.com/wiki"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="clean-architecture-vue-3.vercel.app">View Page</a>
+    ·
+    <a href="https://github.com/issues">Report Bug</a>
+  </p>
+</div>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Requisitos ⚙️
 
-## Type Support for `.vue` Imports in TS
+<br/>
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+> [!IMPORTANT]  
+> Para comenzar, es necesario asegurarnos de tener los siguiente instalado para poder iniciar el proyecto en modo de desarrollo.
 
-## Customize configuration
+<br />
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+<a href="https://nodejs.org/en/download/package-manager">Node JS</a>
 
-## Project Setup
+<details>
+  <summary>Install NodeJS on Mac Os 🍏</summary>
+  
+  ```shell
+    # installs nvm (Node Version Manager)
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash 
+    # download and install Node.js (you may need to restart the terminal)
+    nvm install 22.14.0
+    # verifies the right Node.js version is in the environment
+    node -v # should print `v22.14.0`
+    # verifies the right npm version is in the environment
+    npm -v # should print 
+  ```
+</details>
 
-```sh
-bun install
+<details>
+  <summary>Install NodeJS on Windows 🪟💻</summary>
+  
+  ```shell
+    # installs fnm (Fast Node Manager)
+    winget install Schniz.fnm
+    
+    # configure fnm environment
+    fnm env --use-on-cd | Out-String | Invoke-Expression
+    
+    # download and install Node.js
+    fnm use --install-if-missing 22.14.0
+    
+    # verifies the right Node.js version is in the environment
+    node -v # should print `v22.14.0`
+  ```
+</details>
+
+<br/>
+<br/>
+
+## Iniciar el Proyecto 🏃
+
+A continuación, los pasos para inicializar el proyecto
+
+<br/>
+
+### Configurar Variables de Entorno 📟
+
+Debes agregar un nuevo archivo `.env.local` en la raíz del proyecto para instalar las dependencias y correr el proyecto en local.
+
+```shell
+# .env.example
+
+  ,-.       _,---._ __  / \
+ /  )    .-'       `./ /   \      ~~~  Env Init ~~~
+(  (   ,'            `/    /|
+ \  `-"             \'\   / |     
+  `.              ,  \ \ /  |     
+   /`*          ,'-`----Y   |     
+  (            ; .envs  |   '     
+  |  ,-.    ,-'         |  /
+  |  | (   |  CLEAN ENV | /
+  )  |  \  `.___________|/
+  `--'   `--'
 ```
 
-### Compile and Hot-Reload for Development
+Dentro de la raíz del proyecto vamos a tener tomar la configuración en `.env.example` y crear nuestro propio `env.local` a nivel raiz con los valores correctos.
 
-```sh
-bun dev
+<br/>
+
+### Instalación de Dependencias
+
+Proseguimos a instalar nuestras dependencias de desarrollo con npm, para eso necesitamos ejecutar el siguiente comando.
+
+```shell
+bun i
 ```
 
-### Type-Check, Compile and Minify for Production
+y listo, dependencias instaladas 🤠.
 
-```sh
-bun run build
+<br/>
+
+### Scripts
+
+podemos ejecutar nuestros siguientes scripts
+
+```typescript
+ "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "test:e2e": "playwright test",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
+    "lint:eslint": "eslint . --fix",
+    "lint": "run-s lint:*",
+    "format": "prettier --write src/"
+  },
 ```
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
+para levantar el proyecto sería con el siguiente comando:
 
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-bun run build
-
-# Runs the end-to-end tests
-bun test:e2e
-# Runs the tests only on Chromium
-bun test:e2e --project=chromium
-# Runs the tests of a specific file
-bun test:e2e tests/example.spec.ts
-# Runs the tests in debug mode
-bun test:e2e --debug
+```shell
+bun run dev
 ```
+
+y listo, ya tendemos nuestro proyecto corriendo correctamente en el puerto 5173.
+
+```shell
+ VITE v6.0.3  ready in 580 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  Vue DevTools: Open http://localhost:5173/__devtools__/ as a separate window
+  ➜  Vue DevTools: Press Option(⌥)+Shift(⇧)+D in App to toggle the Vue DevTools
+```
+
+Y eso sería todo para poder levantar el proyecto correctamente.
+
+<br/>
+
+## Built With 🏗️
+
+<br/>
+
+<div style="display: inline-block"> 
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />    
+  <img src="https://img.shields.io/badge/Vue%20js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D" />   
+</div>
+
+<br/>
+
 
 ### Lint with [ESLint](https://eslint.org/)
 
@@ -57,7 +166,7 @@ bun test:e2e --debug
 bun lint
 ```
 
-# clean-architecture-vue-3
+# Architecture
 
 ```mermaid
 graph TB
