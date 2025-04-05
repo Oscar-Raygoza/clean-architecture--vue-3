@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="#">
-    <img src="https://media-hosting.imagekit.io/7ac38f7f87854142/bmc_qr.png?Expires=1838328216&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=x1gn5KZPJoLXaH1G8yBwQGI5xNV1kaPbLtAxtrVs9Fj2YvYWRGklLs4vPKDujXyBQeV~uaR7zCdgmGuo9sQQ7XuKBvYW7RvACGE9vE3TQi905-rfjV8V0meDjqZ-RmL7dnUYkVsUFyM0Vdu4vtKkC-9VnvzmXZEiQDsF4f0U34d4aj5PjSOYBRofFaISb2EIiTZckKdkvcby9EPAFhaQgqyQzTAKnMxzo9YHVSLMKGvD~gjAsN8PogTEVDDgOdkaRfECY3sPURBC7m8CNxS5ON0tXm69LfXcEBPGQDl8CwmmFf26X7E4v2YeQwR~oRKys95a3V3W-aM4S2Z7u0G7RA__" alt="Logo" width="10%" height="auto">
+  <a href="https://buymeacoffee.com/oscarraygoza">
+    <img src="https://media-hosting.imagekit.io/f7637aea93cb4467/bmc-button.png?Expires=1838494865&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=2uTrrEPlULK4arPUFfc1O3FsDuQN2CNBpuLWSeHJT0He19CL71oHcEjy-TCz31hUEurYTmXL~V~Vnuom4prgvKOcHQ9jhqPisiUsqvYBu9ZRTYuHcVs~symajmkdnPJtks4Sjs5qBR~bh9xdhvOufXqd67GNVmQr-frG1Ip8p~8-egGP95PT3~oL9SSfQPdfaEwrmpkUF96MH8nZ~WVnNDGLhaTFK42ZR7PyB95bA-gw60yqrztA8RHIfREY~epWy~dEWIo3mxH-Vg3aa6LV-BUvirOZ5QM9Vxr96AbxcdNa8uninlPbfvCJg2D5f7K0f3wxALdzvMu0xmfTJo8fEw__" alt="Logo" width="30%" height="auto">
   </a>
 
   <h3 align="center">CLEAN ARCHITECTURE FRONTEND</h3>
@@ -10,7 +10,7 @@
     Una exemplo practico donde utilizamos una arquitectura limpia 
     <br />
     <br />
-    <a href="https://github.com/wiki"><strong>Explore the docs »</strong></a>
+    <a href="https://medium.com/@oscar.eduardo.raygoza/implementando-clean-architecture-en-el-frontend-una-experiencia-pr%C3%A1ctica-68d1dab575eb"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="clean-architecture-vue-3.vercel.app">View Page</a>
