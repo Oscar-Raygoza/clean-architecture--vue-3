@@ -114,6 +114,19 @@ Follow these steps to set up and run the project locally.
 ```bash
 # .env.local
 
+  ,-.       _,---._ __  / \
+ /  )    .-'       `./ /   \      ~~~  Env Init ~~~
+(  (   ,'            `/    /|
+ \  `-"             \'\   / |     
+  `.              ,  \ \ /  |     
+   /`*          ,'-`----Y   |     
+  (            ; .envs  |   '     
+  |  ,-.    ,-'         |  /
+  |  | (   |            | /
+  )  |  \  `.___________|/
+  `--'   `--'
+
+
 VITE_POKEMONTCG_API_KEY=your_api_key_here
 ```
 
