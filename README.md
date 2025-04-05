@@ -12,7 +12,7 @@
     <a href="https://medium.com/@oscar.eduardo.raygoza/implementando-clean-architecture-en-el-frontend-una-experiencia-pr%C3%A1ctica-68d1dab575eb"><strong>Read the detailed guide »</strong></a>
     <br />
     <br />
-    <a href="https://clean-architecture-vue-3.vercel.app">View Demo</a>
+    <a href="https://pokemontcgpoket.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/Oscar-Raygoza/clean-architecture--vue-3/issues">Report Bug</a>
     ·
