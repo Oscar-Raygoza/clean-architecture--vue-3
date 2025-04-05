@@ -96,6 +96,8 @@ Dentro de la raíz del proyecto vamos a tener tomar la configuración en `.env.e
 
 <br/>
 
+Debemos de generar un `API KEY` de https://dev.pokemontcg.io/ para poder consumir las APIs, nos registramos y agregamos el valor de `VITE_POKEMONTCG_API_KEY`
+
 ### Instalación de Dependencias
 
 Proseguimos a instalar nuestras dependencias de desarrollo con npm, para eso necesitamos ejecutar el siguiente comando.
