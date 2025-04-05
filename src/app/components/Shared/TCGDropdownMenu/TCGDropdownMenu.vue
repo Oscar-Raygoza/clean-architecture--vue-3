@@ -26,10 +26,10 @@
       @click="closeDropdown"
     >
       <div class="py-1" role="none">
-        <router-link
+        <a
           v-for="item in props.items"
           :key="item.id"
-          :to="item.to"
+          :href="item.to"
           class="flex items-center gap-x-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
           role="menuitem"
         >
@@ -40,7 +40,7 @@
             aria-hidden="true"
           />
           {{ item.text }}
-        </router-link>
+        </a>
       </div>
     </div>
   </div>

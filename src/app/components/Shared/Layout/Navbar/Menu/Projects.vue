@@ -21,6 +21,6 @@ const { t } = useLocale(messages)
 
 const project = computed(() => [
   { id: 1, text: t('colorDesign'), to: '/colors' },
-  { id: 2, text: t('architecture'), to: '/search' },
+  { id: 2, text: t('architecture'), to: 'https://medium.com/@oscar.eduardo.raygoza/implementando-clean-architecture-en-el-frontend-una-experiencia-pr%C3%A1ctica-68d1dab575eb' },
 ])
 </script>
