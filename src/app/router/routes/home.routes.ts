@@ -9,8 +9,19 @@ const routes: RouteRecordRaw[] = [
     component: HomeView,
     meta: {
       title: 'Home',
-      requiresAuth: false
+      requiresAuth: false,
+      metaTags: [
+        {
+          name: 'description',
+          content: "Nice description here"
+        },
+        {
+        name: 'keywords',
+        content: "all, of, my, keywords, here"
+        }
+      ]
     }
+
   },
   {
     path: 'colors',

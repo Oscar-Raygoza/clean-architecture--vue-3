@@ -16,6 +16,10 @@
 
 <script setup lang="ts">
 import { reactive, defineEmits, onMounted } from 'vue'
+import { useHead } from '@vueuse/head'
+
+// constants
+import constants from '@/infrastructure/config/constants'
 
 import TCGInput from '@/app/components/Shared/TCGInputs/TCGInput.vue'
 import TCGIcon from '@/app/components/Shared/TCGIcons/TCGIcon.vue'
@@ -30,6 +34,12 @@ const props = withDefaults(defineProps<InputSearchProps>(), {
 })
 onMounted(() => {
   form.querySearch = props.value
+})
+
+// head
+useHead({
+  title: 'TCG Pocket - Search',
+  meta: constants.META_PAGE!
 })
 
 // state

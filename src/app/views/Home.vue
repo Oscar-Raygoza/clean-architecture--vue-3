@@ -7,7 +7,9 @@
       >
         Pokémon TCG Poket</TCGTitle
       >
-      <TCGTitle variant="secondary" component="h2" class="text-center"> {{ t('mainSubtitle') }}</TCGTitle>
+      <TCGTitle variant="secondary" component="h2" class="text-center">
+        {{ t('mainSubtitle') }}</TCGTitle
+      >
     </div>
 
     <div class="flex justify-center items-center pt-6 md:pt-10 flex-cols">
@@ -26,7 +28,7 @@
     <section
       id="container-random-cards"
       class="relative w-full max-w-4xl mx-auto my-10 md:my-20 hidden md:block"
-      style="height: 500px;"
+      style="height: 500px"
     >
       <div
         v-for="(card, position) in cards"
@@ -55,6 +57,10 @@
 
 <script setup lang="ts">
 import { onMounted, computed, ref, reactive, type Ref } from 'vue'
+import { useHead } from '@vueuse/head'
+
+// constants
+import constants from '@/infrastructure/config/constants'
 
 // router
 import { useRouter } from 'vue-router'
@@ -87,6 +93,12 @@ onMounted(async () => {
 
   // Actualizar posiciones cuando cambia el tamaño de ventana
   window.addEventListener('resize', handleResize)
+})
+
+// SEO
+useHead({
+  title: 'TCG Pocket - Rastreador de Cartas Coleccionables',
+  meta: constants.META_PAGE!,
 })
 
 // Limpiar event listener cuando el componente se desmonta
