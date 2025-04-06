@@ -62,5 +62,9 @@ export default {
       rel: 'canonical',
       href: 'https://pokemontcgpoket.vercel.app',
     },
+    {
+      name: 'google-site-verification',
+      content: 'pzfoVeYWjR2hGuRpH4t7cr85alVcOszUUDuMp5rW5bQ5',
+    }
   ],
 }
