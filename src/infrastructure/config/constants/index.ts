@@ -63,4 +63,4 @@ export default {
       href: 'https://pokemontcgpoket.vercel.app',
     },
   ],
-} as const
+}
