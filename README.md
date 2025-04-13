@@ -300,9 +300,7 @@ This project is licensed under the MIT License.
 
 ## 📬 Contact
 
-Oscar Raygoza - [@OscarRaygoza_](https://twitter.com/OscarRaygoza_) - oscar.eduardo.raygoza@gmail.com
-
-Project Link: [https://github.com/Oscar-Raygoza/clean-architecture--vue-3](https://github.com/Oscar-Raygoza/clean-architecture--vue-3)
+Oscar Raygoza - oscar.eduardo.raygoza@gmail.com
 
 ---
 
