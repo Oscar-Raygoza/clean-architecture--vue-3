@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://buymeacoffee.com/oscarraygoza">
-    <img src="https://media-hosting.imagekit.io/f7637aea93cb4467/bmc-button.png?Expires=1838494865&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=2uTrrEPlULK4arPUFfc1O3FsDuQN2CNBpuLWSeHJT0He19CL71oHcEjy-TCz31hUEurYTmXL~V~Vnuom4prgvKOcHQ9jhqPisiUsqvYBu9ZRTYuHcVs~symajmkdnPJtks4Sjs5qBR~bh9xdhvOufXqd67GNVmQr-frG1Ip8p~8-egGP95PT3~oL9SSfQPdfaEwrmpkUF96MH8nZ~WVnNDGLhaTFK42ZR7PyB95bA-gw60yqrztA8RHIfREY~epWy~dEWIo3mxH-Vg3aa6LV-BUvirOZ5QM9Vxr96AbxcdNa8uninlPbfvCJg2D5f7K0f3wxALdzvMu0xmfTJo8fEw__" alt="Logo" width="30%" height="auto">
+    <img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" alt="Logo" width="30%" height="auto">
   </a>
 
   <h1 align="center">CLEAN ARCHITECTURE FRONTEND</h1>
